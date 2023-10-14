@@ -11,6 +11,7 @@ public class Marking : MonoBehaviour
     public LayerMask structureLayer;
     public string SpawnsPoint;
     public MarkingData[] markingDatas;
+    private int index;
     void Update()
     {
         Vector3 point = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y, Camera.main.transform.position.z));
@@ -40,40 +41,41 @@ public class Marking : MonoBehaviour
                     x = 0.1f;
                 }
                 Vector3 zxOffset = new Vector3(x,0,z);
-               GameObject test = Instantiate(Markings[0], hit.point+ zxOffset, hit.transform.rotation);
 
-                //SpawnsPoint = JsonUtility.ToJson(test.transform.position);
-                //string path = Path.Combine(Application.dataPath, "MarkingData.json");
-                //File.WriteAllText(path, SpawnsPoint);
+               GameObject test = Instantiate(Markings[index], hit.point+ zxOffset, hit.transform.rotation);
 
                 MarkingData markingData = new MarkingData();
                 markingData.x = test.transform.position.x;
                 markingData.y = test.transform.position.y;
                 markingData.z = test.transform.position.z;
-
-                // Serialize the MarkingData instance to JSON and append it to the file
+                markingData.rotation = hit.transform.rotation;
+                markingData.MarkingIndex = index;
                 string markingDataJson = JsonUtility.ToJson(markingData);
                 string path = Path.Combine(Application.dataPath, "MarkingData.json");
                 File.AppendAllText(path, markingDataJson + "\n");
             }
         }
+        //밑에는 테스트용
+        if(Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            index = 1;
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad0))
+        {
+            index = 0;
+        }
     }
 
     private void Start()
     {
-        //string path = Path.Combine(Application.dataPath, "MarkingData.json");
-        //string jsonData = File.ReadAllText(path);
-        //MarkingData markingData = JsonUtility.FromJson<MarkingData>(jsonData);
-
         string path = Path.Combine(Application.dataPath, "MarkingData.json");
         string[] jsonDataLines = File.ReadAllLines(path);
         markingDatas = new MarkingData[jsonDataLines.Length];
-
         for (int i = 0; i < jsonDataLines.Length; i++)
         {
             markingDatas[i] = JsonUtility.FromJson<MarkingData>(jsonDataLines[i]);
-            // You can access x, y, z values like this:
-            Debug.Log("Index " + i + " - x: " + markingDatas[i].x + ", y: " + markingDatas[i].y + ", z: " + markingDatas[i].z);
+            Instantiate(Markings[markingDatas[i].MarkingIndex], new Vector3(markingDatas[i].x, markingDatas[i].y, markingDatas[i].z), markingDatas[i].rotation);
+ 
         }
     }
 
@@ -84,4 +86,6 @@ public class MarkingData
     public float x;
     public float y;
     public float z;
+    public Quaternion rotation;
+    public int MarkingIndex;
 }
