@@ -52,9 +52,13 @@ public class PlayerController : MonoBehaviour
     {
         if (!_playerConditions.isRun)
         {
+            _animator.SetBool(runParameterName, false);
             Move();
         }
         else Run();
+
+        _animator.SetFloat("Blend", 1 - _playerConditions.stamina.GetPercentage());
+        //moveSpeed *= (1 - _playerConditions.stamina.GetPercentage());
     }
 
     private void LateUpdate()
