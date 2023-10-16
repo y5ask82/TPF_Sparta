@@ -26,13 +26,21 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private PlayerConditions _playerConditions;
+    private Animator _animator;
+
+    [SerializeField] private string walkParameterName = "Walk";
+    [SerializeField] private string runParameterName = "Run";
+
 
     public static PlayerController instance;
     private void Awake()
     {
+
         instance = this;
         _rigidbody = GetComponent<Rigidbody>();
         _playerConditions = GetComponent<PlayerConditions>();
+        _animator = GetComponentInChildren<Animator>();
+
     }
 
     void Start()
@@ -44,9 +52,13 @@ public class PlayerController : MonoBehaviour
     {
         if (!_playerConditions.isRun)
         {
+            _animator.SetBool(runParameterName, false);
             Move();
         }
         else Run();
+
+        _animator.SetFloat("Blend", 1 - _playerConditions.stamina.GetPercentage());
+        //moveSpeed *= (1 - _playerConditions.stamina.GetPercentage());
     }
 
     private void LateUpdate()
@@ -62,6 +74,7 @@ public class PlayerController : MonoBehaviour
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
         dir *= moveSpeed;
         dir.y = _rigidbody.velocity.y;
+
 
         _rigidbody.velocity = dir;
         
@@ -96,15 +109,21 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Performed)
         {
             curMovementInput = context.ReadValue<Vector2>();
-            if(curMovementInput.x > 0.72 || curMovementInput.x < -0.72 || curMovementInput.y < 0.7)
+
+            if (curMovementInput.x > 0.72 || curMovementInput.x < -0.72 || curMovementInput.y < 0.7)
             {
+                _animator.SetBool(runParameterName, false);
                 _playerConditions.isRun = false;
             }
+            _animator.SetBool(walkParameterName, true);
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
             curMovementInput = Vector2.zero;
             _playerConditions.isRun = false;
+
+            _animator.SetBool(runParameterName, false);
+            _animator.SetBool(walkParameterName, false);
         }
     }
     public void OnRunInput(InputAction.CallbackContext context)
@@ -115,10 +134,12 @@ public class PlayerController : MonoBehaviour
             && curMovementInput.x >= -0.71 
             && curMovementInput.y >= 0.71)
         {
+            _animator.SetBool(runParameterName, true);
             _playerConditions.isRun = true;
         }
         else if (_playerConditions.isRun == true)
         {
+            _animator.SetBool(runParameterName, false);
             _playerConditions.isRun = false;
         }
     }
