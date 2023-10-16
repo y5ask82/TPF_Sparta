@@ -99,6 +99,7 @@ public class Marking : MonoBehaviour
             }
             else
                 index++;
+            MarkingUI.Instance.ChangedImage(index);
         }
         else if (wheelInput < 0)
         {
@@ -108,6 +109,7 @@ public class Marking : MonoBehaviour
             }
             else
                 index--;
+            MarkingUI.Instance.ChangedImage(index);
         }
     }
 }

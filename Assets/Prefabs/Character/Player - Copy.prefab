@@ -236,6 +236,7 @@ GameObject:
   - component: {fileID: 7673742806429734821}
   - component: {fileID: 2311320572949893342}
   - component: {fileID: 9007132219681359116}
+  - component: {fileID: 1192272187255766097}
   m_Layer: 6
   m_Name: Player - Copy
   m_TagString: Player
@@ -257,7 +258,7 @@ Transform:
   m_Children:
   - {fileID: 8374395077529547270}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4819610656053058375
 MonoBehaviour:
@@ -364,6 +365,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9df1b30f-be4c-459c-be6c-b00b0010f517
     m_ActionName: Player/FlashLight[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2311320572949893342}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnMakringInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0bce6c14-9964-4aa1-88f3-449d752e0000
+    m_ActionName: Player/Marking[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2311320572949893342}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnMenuInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6cda0a22-7ec3-471a-8e0f-18ea95f835ca
+    m_ActionName: Player/Menu[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -469,6 +502,24 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isRun: 0
+--- !u!114 &1192272187255766097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522714084375321363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffd6fc8c8b51623499128b0a630d1b38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 5522714084375321363}
+  Markings:
+  - {fileID: 6270081241379127209, guid: 1fe11eb5b5aadbf459d9ede97e591a03, type: 3}
+  - {fileID: 6270081241379127209, guid: 52a6d992d41e29e4b92f1ffa3e4a71ba, type: 3}
+  - {fileID: 6270081241379127209, guid: 3b34adb402c277e4ab66ddd330505804, type: 3}
+  index: 0
 --- !u!1 &8082818094542438457
 GameObject:
   m_ObjectHideFlags: 0

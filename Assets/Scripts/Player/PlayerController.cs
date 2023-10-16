@@ -169,7 +169,7 @@ public class PlayerController : MonoBehaviour
         {
             canControllFlash = false;
             FlashToggle();
-            Invoke(nameof(ControllOn), 1f);//지연함수, nameof 함수를 문자가 아닌 함수를 바로 호출 
+            Invoke(nameof(ControllOn), 1f);//지?�함?? nameof ?�수�?문자가 ?�닌 ?�수�?바로 ?�출 
         }
     }
     private void FlashToggle()
@@ -223,6 +223,13 @@ public class PlayerController : MonoBehaviour
                     Marking.I.SaveMarkingData(test, markRotation);
                 }
                 }
+        }
+    }
+    public void OnMenuInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            UIManager.Instance.PopPanel();
         }
     }
 
