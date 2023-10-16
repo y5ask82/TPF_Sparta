@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 7778923804736081934}
   - component: {fileID: 6011382123725356680}
   - component: {fileID: 8553678374697813959}
+  - component: {fileID: 6526462494882030375}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -129,7 +130,7 @@ Transform:
   m_Children:
   - {fileID: 6838058787526637466}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3954544466228681246
 MonoBehaviour:
@@ -236,6 +237,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9df1b30f-be4c-459c-be6c-b00b0010f517
     m_ActionName: Player/FlashLight[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6011382123725356680}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnMakringInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0bce6c14-9964-4aa1-88f3-449d752e0000
+    m_ActionName: Player/Marking[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -261,9 +278,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!54 &7778923804736081934
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -311,6 +328,8 @@ MonoBehaviour:
   lookSensitivity: 0.2
   flashLight: {fileID: 9161263953838598778}
   canLook: 1
+  walkParameterName: Walk
+  runParameterName: Run
 --- !u!114 &8553678374697813959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,14 +350,32 @@ MonoBehaviour:
     decayRate: 0
   stamina:
     curValue: 0
-    maxValue: 50
-    startValue: 50
+    maxValue: 30
+    startValue: 30
     regenRate: 5
     decayRate: 5
   onTakeDamage:
     m_PersistentCalls:
       m_Calls: []
   isRun: 0
+--- !u!114 &6526462494882030375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501332843109187570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffd6fc8c8b51623499128b0a630d1b38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1501332843109187570}
+  Markings:
+  - {fileID: 6270081241379127209, guid: 52a6d992d41e29e4b92f1ffa3e4a71ba, type: 3}
+  - {fileID: 6270081241379127209, guid: 3b34adb402c277e4ab66ddd330505804, type: 3}
+  - {fileID: 6270081241379127209, guid: 52a6d992d41e29e4b92f1ffa3e4a71ba, type: 3}
+  index: 0
 --- !u!1 &4982607273465205840
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +400,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4982607273465205840}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
