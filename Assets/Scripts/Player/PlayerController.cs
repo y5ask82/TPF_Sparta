@@ -34,6 +34,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private string walkParameterName = "Walk";
     [SerializeField] private string runParameterName = "Run";
 
+    AudioClip[] walkFootStepSound= null;
+    AudioClip[] runFootStepSound;
+    AudioClip[] walkHeartBeatSound;
+    AudioClip[] runHeartBeatSound;
+
+
 
     public static PlayerController instance;
     private void Awake()
@@ -44,10 +50,16 @@ public class PlayerController : MonoBehaviour
         _playerConditions = GetComponent<PlayerConditions>();
         _animator = GetComponentInChildren<Animator>();
 
+        walkFootStepSound = Resources.LoadAll<AudioClip>("PlayerSoundEffect/FootStep_Walk");
+        runFootStepSound = Resources.LoadAll<AudioClip>("PlayerSoundEffect/FootStep_Run");
+        walkHeartBeatSound = Resources.LoadAll<AudioClip>("PlayerSoundEffect/HeartBeat_Walk");
+        runHeartBeatSound = Resources.LoadAll<AudioClip>("PlayerSoundEffect/HeartBeat_Run");
+
     }
 
     void Start()
     {
+        SoundManager.instance.PlaySFX(walkFootStepSound[0]);
         Cursor.lockState = CursorLockMode.Locked;
     }
 
