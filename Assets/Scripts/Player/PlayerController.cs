@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    bool canControllFlash=true;
     [Header("Movement")]
     public float moveSpeed;
     public float runSpeed;
@@ -125,8 +126,22 @@ public class PlayerController : MonoBehaviour
 
     public void OnFlashLightInput(InputAction.CallbackContext context)
     {
-        if(flashLight.gameObject.activeSelf) flashLight.gameObject.SetActive(false);
-        else flashLight.gameObject.SetActive(true);
+        if (canControllFlash)
+        {
+            canControllFlash = false;
+            FlashToggle();
+            Invoke(nameof(ControllOn), 1f);//지연함수, nameof 함수를 문자가 아닌 함수를 바로 호출 
+        }
+    }
+    private void FlashToggle()
+    {
+        bool active = !flashLight.gameObject.activeSelf;
+        flashLight.gameObject.SetActive(active);
+    }
+
+    public void ControllOn()
+    {
+        canControllFlash = true;
     }
 
     public void ToggleCursor(bool toggle)
