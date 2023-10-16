@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        if (walkFootStepSound == null) Debug.Log("¿¡·¯");
         SoundManager.instance.PlaySFX(walkFootStepSound[0]);
         Cursor.lockState = CursorLockMode.Locked;
     }
