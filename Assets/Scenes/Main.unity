@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.08056136, g: 0.07437252, b: 0.058711357, a: 1}
+  m_IndirectSpecularColor: {r: 0.08056138, g: 0.07437261, b: 0.058711223, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -179,6 +179,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6526462494882030375, guid: a1a4c14e5103bbd439849e0409640135, type: 3}
+      propertyPath: Markings.Array.data[0]
+      value: 
+      objectReference: {fileID: 6270081241379127209, guid: 1fe11eb5b5aadbf459d9ede97e591a03, type: 3}
+    - target: {fileID: 6526462494882030375, guid: a1a4c14e5103bbd439849e0409640135, type: 3}
+      propertyPath: Markings.Array.data[1]
+      value: 
+      objectReference: {fileID: 6270081241379127209, guid: 52a6d992d41e29e4b92f1ffa3e4a71ba, type: 3}
+    - target: {fileID: 6526462494882030375, guid: a1a4c14e5103bbd439849e0409640135, type: 3}
+      propertyPath: Markings.Array.data[2]
+      value: 
+      objectReference: {fileID: 6270081241379127209, guid: 3b34adb402c277e4ab66ddd330505804, type: 3}
     - target: {fileID: 9161263953838598778, guid: a1a4c14e5103bbd439849e0409640135, type: 3}
       propertyPath: m_Type
       value: 0
