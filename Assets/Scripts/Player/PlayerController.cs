@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Marking.I.IndexChange(); //ÈÙ°ªÀ» ÅëÇØ ¸¶Å· ¹¹ÇÒÁö °áÁ¤
+        Marking.I.IndexChange(); //ï¿½Ù°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å· ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
     private void LateUpdate()
     {
@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
         {
             canControllFlash = false;
             FlashToggle();
-            Invoke(nameof(ControllOn), 1f);//ì§€?°í•¨?? nameof ?¨ìˆ˜ë¥?ë¬¸ìê°€ ?„ë‹Œ ?¨ìˆ˜ë¥?ë°”ë¡œ ?¸ì¶œ 
+            Invoke(nameof(ControllOn), 1f);//ì§€?ï¿½í•¨?? nameof ?ï¿½ìˆ˜ï¿½?ë¬¸ìê°€ ?ï¿½ë‹Œ ?ï¿½ìˆ˜ï¿½?ë°”ë¡œ ?ï¿½ì¶œ 
         }
     }
     private void FlashToggle()
