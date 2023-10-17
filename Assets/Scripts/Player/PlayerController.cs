@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -34,11 +35,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private string walkParameterName = "Walk";
     [SerializeField] private string runParameterName = "Run";
 
-    AudioClip[] walkFootStepSound= null;
-    AudioClip[] runFootStepSound;
-    AudioClip[] walkHeartBeatSound;
-    AudioClip[] runHeartBeatSound;
-
+    public int flashGrenadeNum;
+    public FlashGrenade _flashGrenade;
 
 
     public static PlayerController instance;
@@ -49,17 +47,13 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         _playerConditions = GetComponent<PlayerConditions>();
         _animator = GetComponentInChildren<Animator>();
+        _flashGrenade = GetComponentInChildren<FlashGrenade>();
 
-        walkFootStepSound = Resources.LoadAll<AudioClip>("PlayerSoundEffect/FootStep_Walk");
-        runFootStepSound = Resources.LoadAll<AudioClip>("PlayerSoundEffect/FootStep_Run");
-        walkHeartBeatSound = Resources.LoadAll<AudioClip>("PlayerSoundEffect/HeartBeat_Walk");
-        runHeartBeatSound = Resources.LoadAll<AudioClip>("PlayerSoundEffect/HeartBeat_Run");
-
+        flashGrenadeNum = 3;
     }
 
     void Start()
     {
-        SoundManager.instance.PlaySFX(walkFootStepSound[0]);
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -238,4 +232,14 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
     }
+
+    public void OnFlashGrenadeInput(InputAction.CallbackContext context)
+    {
+        if (flashGrenadeNum > 0 && _flashGrenade != null && !_flashGrenade.Flashing)
+        {
+            flashGrenadeNum--;
+            _flashGrenade.Flash();
+        }
+    }
+    
 }
