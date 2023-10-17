@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
 
     public static PlayerController instance;
+
     private void Awake()
     {
 
@@ -66,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Marking.I.IndexChange(); //ÈÙ°ªÀ» ÅëÇØ ¸¶Å· ¹¹ÇÒÁö °áÁ¤
+        Marking.I.IndexChange(); //ï¿½Ù°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å· ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
     private void LateUpdate()
     {
@@ -219,4 +220,5 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
     }
+
 }

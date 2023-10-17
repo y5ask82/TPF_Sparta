@@ -10,7 +10,7 @@ public class RedLight : MonoBehaviour
     [SerializeField] private AudioClip[] clip;
     [SerializeField] Light PointLight;
     [SerializeField] GameObject Point;
-    
+    Coroutine test;
     int waitSec;
 
     private void OnTriggerEnter(Collider other)
@@ -19,9 +19,20 @@ public class RedLight : MonoBehaviour
         {
             audioSource.Play();
             Point.SetActive(true);
-            StartCoroutine(Blink());
+            //test=StartCoroutine(nameof(Blink));//????????
+            StartCoroutine(nameof(Blink));
+            Invoke(nameof(Off), 2f);
+            //StopCoroutine(test);///????????
         }
     }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.gameObject.tag == "Player")
+    //    {
+    //        Point.SetActive(false);
+    //        StopCoroutine(Blink());
+    //    }
+    //}
     IEnumerator Blink()
     {
         while (true)
@@ -48,5 +59,10 @@ public class RedLight : MonoBehaviour
         audioSource.Play();
     }
 
+    public void Off()
+    {
+        Point.SetActive(false);
+        StopCoroutine(nameof(Blink));
+    }
 
 }
