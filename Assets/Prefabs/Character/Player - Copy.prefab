@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c3333c04c2d5d4b8d29ba5d9491089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Flashing: 0
 --- !u!1 &4044724163977573129
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,6 +304,7 @@ GameObject:
   - component: {fileID: 2311320572949893342}
   - component: {fileID: 9007132219681359116}
   - component: {fileID: 1192272187255766097}
+  - component: {fileID: 975337723070312923}
   m_Layer: 6
   m_Name: Player - Copy
   m_TagString: Player
@@ -325,7 +327,7 @@ Transform:
   - {fileID: 8374395077529547270}
   - {fileID: 8967054035632326033}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4819610656053058375
 MonoBehaviour:
@@ -605,6 +607,20 @@ MonoBehaviour:
   - {fileID: 6270081241379127209, guid: 52a6d992d41e29e4b92f1ffa3e4a71ba, type: 3}
   - {fileID: 6270081241379127209, guid: 3b34adb402c277e4ab66ddd330505804, type: 3}
   index: 0
+--- !u!114 &975337723070312923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522714084375321363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25cbb5df0b8d444cdaaa56f28d87d85e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keys: []
+  hasKeys: 000000
 --- !u!1 &8082818094542438457
 GameObject:
   m_ObjectHideFlags: 0
