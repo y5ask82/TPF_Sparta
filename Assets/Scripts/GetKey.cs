@@ -29,6 +29,8 @@ public class GetKey : MonoBehaviour
                 int keyIndex = key.value;
                 hasKeys[keyIndex] = true;
 
+                PlayerUI.instance.PlayerGetKey(hasKeys);
+
                 Destroy(nearObject);
             }
         }

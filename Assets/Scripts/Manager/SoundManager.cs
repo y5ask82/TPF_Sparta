@@ -6,6 +6,10 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioSource bgmSounds;
     [SerializeField] private AudioSource sfxSounds;
+    [SerializeField] private AudioSource sfxSoundsVariable1;
+    [SerializeField] private AudioSource sfxSoundsVariable2;
+    [SerializeField] private AudioSource sfxSoundsVariable3;
+    [SerializeField] private AudioSource sfxSoundsVariable4;
 
     private float bgmVolume;
     private float sfxVolume;
@@ -93,4 +97,31 @@ public class SoundManager : MonoBehaviour
         sfxSounds.PlayOneShot(clip);
     }
 
+    public void PlaySFXVariable1(AudioClip clip, float volume)
+    {
+        sfxSoundsVariable1.clip = clip;
+        sfxSoundsVariable1.volume = sfxVolume * volume;
+        sfxSoundsVariable1.PlayOneShot(clip);
+    }
+
+    public void PlaySFXVariable2(AudioClip clip, float volume)
+    {
+        sfxSoundsVariable2.clip = clip;
+        sfxSoundsVariable2.volume = sfxVolume * volume;
+        sfxSoundsVariable2.PlayOneShot(clip);
+    }
+
+    public void PlaySFXVariable3(AudioClip clip, float volume)
+    {
+        sfxSoundsVariable3.clip = clip;
+        sfxSoundsVariable3.volume = sfxVolume * volume;
+        sfxSoundsVariable3.PlayOneShot(clip);
+    }
+
+    public void PlaySFXVariable4(AudioClip clip, float volume)
+    {
+        sfxSoundsVariable4.clip = clip;
+        sfxSoundsVariable4.volume = sfxVolume * volume;
+        sfxSoundsVariable4.PlayOneShot(clip);
+    }
 }

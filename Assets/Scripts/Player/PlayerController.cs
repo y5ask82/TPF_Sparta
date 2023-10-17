@@ -238,6 +238,7 @@ public class PlayerController : MonoBehaviour
         if (flashGrenadeNum > 0 && _flashGrenade != null && !_flashGrenade.Flashing)
         {
             flashGrenadeNum--;
+            PlayerUI.instance.FlashGrenadeEffectOn();
             _flashGrenade.Flash();
         }
     }
