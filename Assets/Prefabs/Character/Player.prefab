@@ -562,6 +562,7 @@ MonoBehaviour:
   runParameterName: Run
   flashGrenadeNum: 0
   _flashGrenade: {fileID: 0}
+  flashLightSFX: {fileID: 8300000, guid: d8fc7ceae0e775248a0466f73bec4ec1, type: 3}
 --- !u!114 &9007132219681359116
 MonoBehaviour:
   m_ObjectHideFlags: 0

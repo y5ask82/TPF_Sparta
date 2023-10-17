@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
     public int flashGrenadeNum;
     public FlashGrenade _flashGrenade;
 
+    [SerializeField] private AudioClip flashLightSFX;
+
 
     public static PlayerController instance;
     private void Awake()
@@ -161,6 +163,7 @@ public class PlayerController : MonoBehaviour
     {
         if (canControllFlash)
         {
+            SoundManager.instance.PlaySFX(flashLightSFX, 0.5f);
             canControllFlash = false;
             FlashToggle();
             Invoke(nameof(ControllOn), 1f);//지?�함?? nameof ?�수�?문자가 ?�닌 ?�수�?바로 ?�출 
