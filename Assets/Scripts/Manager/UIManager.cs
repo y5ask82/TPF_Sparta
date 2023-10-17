@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Color = UnityEngine.Color;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,28 +15,42 @@ public class UIManager : MonoBehaviour
     public Light light;
     public Slider slider;
     public static UIManager Instance;
+    public RawImage Ghost;
+    private bool IsUI;
+    private Color color;
+    private GameObject player;
+
     private void Awake()
     {
         Instance = this;
         UIPanel.SetActive(false);
+        player = GameObject.FindWithTag("Player");
+        color = Ghost.GetComponent<RawImage>().color;
     }
-
     public void PopPanel()
     {
         if(UIPanel.gameObject.activeSelf == false)
         {
+            IsUI = true;
+            Ghost.gameObject.SetActive(true);
             UIPanel.SetActive(true);
             Btns.SetActive(true);
             Setting.SetActive(false);
             Brightness.SetActive(false);
+            Time.timeScale = .0f;
+            player.GetComponent<PlayerController>().canLook = false;
             Cursor.lockState = CursorLockMode.None;
         }
         else
         {
+            IsUI = false;
+            Ghost.gameObject.SetActive(false);
             UIPanel.SetActive(false);
             Btns.SetActive(false);
             Setting.SetActive(false);
             Brightness.SetActive(false);
+            Time.timeScale = 1f;
+            player.GetComponent<PlayerController>().canLook = true;
             Cursor.lockState = CursorLockMode.Locked;
         }
      
@@ -45,10 +62,12 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Keypad0))
+        if(IsUI)
         {
-            PopPanel();
+         color.a += 0.00001f;
+        Ghost.GetComponent<RawImage>().color = color;
         }
+     
     }
 
     public void OnClickCountinue()
@@ -82,10 +101,7 @@ public class UIManager : MonoBehaviour
     public void SetBright()
     {
         float normalizedValue = slider.normalizedValue;
-
-        // Map the normalizedValue to the desired X rotation range
         float rotationX = Mathf.Lerp(320, 360, normalizedValue);
-
         light.transform.rotation = Quaternion.Euler(rotationX, 0, 0);
     }
 
