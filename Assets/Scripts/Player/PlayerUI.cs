@@ -1,15 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class PlayerUI : MonoBehaviour
 {
-    public PlayerController _player;
-
-    private void Awake()
-    {
-        _player = PlayerController.instance;
-    }
+    public Image[] Key;
+    public Image[] FlashGrenade;
+    public Image FlashGrenadeEffect;
 
     // Start is called before the first frame update
     void Start()
