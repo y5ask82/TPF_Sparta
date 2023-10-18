@@ -40,6 +40,7 @@ public class MonsterCControl : MonoBehaviour
         SetState(AIState.Searching); //처음 시작하면 몬스터는 Searching 상태.
         agent.isStopped = false;
         GetComponent<NavMeshAgent>().enabled = true;
+        gameObject.tag = "Key";
     }
 
     private void Update()
@@ -116,10 +117,6 @@ public class MonsterCControl : MonoBehaviour
             if (getKeyScript != null)
             {
                 int hasKeyAmount = getKeyScript.hasKeys.Length;
-                if (hasKeyAmount < 3)
-                {
-                    //몬스터C에게 Key태그 달아주기
-                }
                 if (hasKeyAmount > 2)
                 {
                     //SoundManager.instance.PlaySFX("죽을때나는소리");

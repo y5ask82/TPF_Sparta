@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -30,6 +31,7 @@ public class MonsterAControl : MonoBehaviour
 
     public float fieldOfView = 120f; //시야각
     private NavMeshAgent agent;
+    private bool isMoving = true;
     //private SkinnedMeshRenderer[] meshRenderers; 메쉬 렌더링
 
     private void Awake()
@@ -68,7 +70,6 @@ public class MonsterAControl : MonoBehaviour
             if (agent.CalculatePath(PlayerController.instance.transform.position, path)) //플레이어를 향한 경로를 찾고 이동하도록
             {
                 agent.SetDestination(PlayerController.instance.transform.position);
-                Debug.Log("서치업데이트" + PlayerController.instance.transform.position);
             }
         }
 
@@ -80,12 +81,21 @@ public class MonsterAControl : MonoBehaviour
 
     private void FollowUpdate()
     {
-        agent.isStopped = false;
-        NavMeshPath path = new NavMeshPath();
-        if (agent.CalculatePath(PlayerController.instance.transform.position, path))
+            agent.isStopped = false;
+            NavMeshPath path = new NavMeshPath();
+            if (agent.CalculatePath(PlayerController.instance.transform.position, path))
+            {
+                agent.SetDestination(PlayerController.instance.transform.position);
+            }
+            if (playerDistance > followDistance)
+            {
+                SetState(AIState.Searching);
+            }
+        if (playerDistance < 0.5f)
         {
-            agent.SetDestination(PlayerController.instance.transform.position);
+            agent.isStopped = true;
         }
+        
     }
 
     bool IsPlayerInFieldOfView() //플레이어가 시야에 있는지 확인.
