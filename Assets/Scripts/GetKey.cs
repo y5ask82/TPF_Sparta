@@ -27,6 +27,13 @@ public class GetKey : MonoBehaviour
         {
             if (nearObject.tag == "Key")
             {
+                //섬광탄 충전
+                if (PlayerController.instance.flashGrenadeNum < 3)
+                {
+                    PlayerController.instance.flashGrenadeNum++;
+                    PlayerUI.instance.UpdateFlashGrenadeUI();
+                }
+
                 Key key = nearObject.GetComponent<Key>();
                 int keyIndex = key.value;
                 hasKeys[keyIndex] = true;
@@ -39,6 +46,8 @@ public class GetKey : MonoBehaviour
                 {
                     Destroy(walls[keyIndex]);
                 }
+
+
             }
         }
     }

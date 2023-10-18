@@ -35,6 +35,14 @@ public class PlayerUI : MonoBehaviour
 
     public void FlashGrenadeEffectOn()
     {
+        UpdateFlashGrenadeUI();
+
+        FlashGrenadeEffect.color = new Color(FlashGrenadeEffect.color.r, FlashGrenadeEffect.color.g, FlashGrenadeEffect.color.b, 1f);
+        StartCoroutine(Flash());
+    }
+
+    public void UpdateFlashGrenadeUI()
+    {
         for (int i = 0; i < FlashGrenade.Length; i++)
         {
             if (i < PlayerController.instance.flashGrenadeNum)
@@ -46,9 +54,6 @@ public class PlayerUI : MonoBehaviour
                 FlashGrenade[i].gameObject.SetActive(false);
             }
         }
-
-        FlashGrenadeEffect.color = new Color(FlashGrenadeEffect.color.r, FlashGrenadeEffect.color.g, FlashGrenadeEffect.color.b, 1f);
-        StartCoroutine(Flash());
     }
 
 

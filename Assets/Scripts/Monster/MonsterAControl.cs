@@ -5,12 +5,13 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem.HID;
+using UnityEngine.SceneManagement;
 
 public enum AIState
 {
    Searching,
    Following,
-   Attacking
 }
 
 public class MonsterAControl : MonoBehaviour
@@ -18,18 +19,9 @@ public class MonsterAControl : MonoBehaviour
     [Header("Stats")]
     public float searchSpeed; //Searching 중의 이동 속도
     public float followSpeed; //발견하고 Following중의 이동 속도
-    public float attackSpeed; //공격시 이동 속도
 
     [Header("AI")]
     private AIState aiState;
-    public float detectDistance; //탐지 거리
-    public float safeDistance;
-
-    [Header("Combat")]
-    public int damage; //데미지
-    public float attackRate; //공격 속도
-    private float lastAttackTime;
-    public float attackDistance; //공격 거리
 
     private float playerDistance; //플레이어와 몬스터간의 거리
     public float searchDistance; //몬스터가 서치 모드이기 위한 거리
@@ -37,7 +29,6 @@ public class MonsterAControl : MonoBehaviour
 
 
     public float fieldOfView = 120f; //시야각
-
     private NavMeshAgent agent;
     //private SkinnedMeshRenderer[] meshRenderers; 메쉬 렌더링
 
@@ -52,6 +43,7 @@ public class MonsterAControl : MonoBehaviour
     {
         SetState(AIState.Searching); //처음 시작하면 몬스터는 Searching 상태.
         agent.isStopped = false;
+        GetComponent<NavMeshAgent>().enabled = true;
     }
 
     private void Update()
@@ -64,9 +56,7 @@ public class MonsterAControl : MonoBehaviour
         {
             case AIState.Searching: SearchUpdate(); break;
             case AIState.Following: FollowUpdate(); break;
-            case AIState.Attacking: AttackUpdate(); break;
         }
-
     }
 
     private void SearchUpdate()
@@ -80,12 +70,14 @@ public class MonsterAControl : MonoBehaviour
                 agent.SetDestination(PlayerController.instance.transform.position);
                 Debug.Log("서치업데이트" + PlayerController.instance.transform.position);
             }
+
             else //경로를 찾지 못할 경우 에러 출력
             {
                 Debug.Log("SearchUpdate에서 플레이어를 향한 경로를 찾지 못했습니다.");
             }
         }
-        else //플레이어와 몬스터간의 거리가 search 거리보다 가까워지고 몬스터의 시야에 보이면
+
+        if(playerDistance < followDistance)
         {
             SetState(AIState.Following);
         }
@@ -103,35 +95,6 @@ public class MonsterAControl : MonoBehaviour
         else
         {
             Debug.Log("FollowUpdate에서 플레이어를 향한 경로를 찾지 못했습니다.");
-        }
-    }
-
-    private void AttackUpdate()
-    {
-        if (playerDistance > attackDistance || !IsPlayerInFieldOfView()) //플레이어와의 거리가 공격거리보다 멀면
-        {
-            agent.isStopped = false;
-            NavMeshPath path = new NavMeshPath();
-            if (agent.CalculatePath(PlayerController.instance.transform.position, path)) //플레이어를 향한 경로를 찾고 이동하도록
-            {
-                agent.SetDestination(PlayerController.instance.transform.position);
-                Debug.Log("어택업데이트" + PlayerController.instance.transform.position);
-            }
-            else //경로를 찾지 못할 경우 에러 출력
-            {
-                Debug.Log("AttackUpdate에서 플레이어를 향한 경로를 찾지 못했습니다.");
-            }
-        }
-        else //플레이어와의 거리가 공격거리 이내가 되면 공격
-        {
-            agent.isStopped = true;
-            if (Time.time - lastAttackTime > attackRate) //공격속도와 마지막 공격까지의 시간 계산.
-            {
-                lastAttackTime = Time.time;
-                PlayerController.instance.GetComponent<IDamagable>().TakePhysicalDamage(damage);
-                //animator.speed = 1;
-                //animator.SetTrigger("Attack"); 애니메이션 일시 제거
-            }
         }
     }
 
@@ -161,14 +124,17 @@ public class MonsterAControl : MonoBehaviour
                     Debug.Log("팔로우업데이트로 변경");
                 }
                 break;
+        }
+    }
 
-            case AIState.Attacking:
-                {
-                    agent.speed = attackSpeed;
-                    agent.isStopped = false;
-                    Debug.Log("어택업데이트로 변경");
-                }
-                break;
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.tag == "Player")
+        {
+            //SoundManager.instance.PlaySFX("죽을때나는소리");
+            GameObject test = Instantiate(Marking.I.Markings[4], PlayerController.instance.transform.position+new Vector3 (0,0.001f,0),Quaternion.identity);
+            Marking.I.SaveMarkingData(test, Quaternion.identity);
+            UIManager.Instance.UICoroutine("FadeIn");
         }
     }
 }
