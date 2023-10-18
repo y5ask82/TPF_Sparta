@@ -210,7 +210,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 3
-  m_Range: 13.142274
+  m_Range: 11
   m_SpotAngle: 73.28
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -271,8 +271,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b536e216bbd27d458fd574b3bcccea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scale: 3
-  speed: 7
+  scale: 1
+  speed: 4
   MakeSourceStationary: 0
   positionOffset: 0
 --- !u!1 &5522714084375321363
@@ -606,7 +606,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cbb5df0b8d444cdaaa56f28d87d85e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Timer: {fileID: 0}
   keys: []
   walls:
   - {fileID: 0}
@@ -614,7 +613,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   hasKeys: 00000000
-  keysToCollect: 4
 --- !u!1 &8082818094542438457
 GameObject:
   m_ObjectHideFlags: 0
