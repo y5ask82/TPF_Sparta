@@ -14,22 +14,14 @@ public class MonsterSpawn : MonoBehaviour
     void Start()
     {
         SpawnMonsterA();
-        SpawnMonsterB();
-        SpawnMonsterC();
-        Time.timeScale = 0.0f; //게임 시작후 일시정지, 플레이어가 움직이면 해제되도록 추가할 것.
     }
 
     public void SpawnMonsterA()
     {
         curMonsterA = Instantiate(MonsterA);
-        float x1 = Random.Range(5, 13);
-        float z1 = Random.Range(34, 44);
-
-        // x와 z 좌표를 짝수로 반올림
-        x1 = Mathf.Round(x1 / 2) * 2 + 1;
-        z1 = Mathf.Round(z1 / 2) * 2 + 1;
-
-        curMonsterA.transform.position = new Vector3(x1, 1, z1);
+        float x1 = 35.0f;
+        float z1 = 35.0f;
+        curMonsterA.transform.position = new Vector3(x1, 1.0f, z1); //몬스터B의 소환 좌표 설정.
     }
 
     public void SpawnMonsterB()
@@ -47,8 +39,8 @@ public class MonsterSpawn : MonoBehaviour
     public void SpawnMonsterC()
     {
         curMonsterC = Instantiate(MonsterC);
-        float x3 = Random.Range(5, 44);
-        float z3 = Random.Range(5, 44);
+        float x3 = Random.Range(36, 44);
+        float z3 = Random.Range(35, 44);
 
         // x와 z 좌표를 짝수로 반올림
         x3 = Mathf.Round(x3 / 2) * 2 + 1;

@@ -35,7 +35,7 @@ public class PlayerSoundEvent : MonoBehaviour
         heartBeatTerm = playerConditions.stamina.GetPercentage()+0.5f;
         if(term>=heartBeatTerm)
         {
-            SoundManager.instance.PlaySFX(
+            SoundManager.instance.PlaySFXVariable1(
                 runHeartBeatSound[UnityEngine.Random.Range(0, runHeartBeatSound.Length)],
                 1.6f - heartBeatTerm);
             term = 0;
@@ -46,7 +46,7 @@ public class PlayerSoundEvent : MonoBehaviour
 
     void Walk()
     {
-        SoundManager.instance.PlaySFX
+        SoundManager.instance.PlaySFXVariable2
             (walkFootStepSound[UnityEngine.Random.Range(0, walkFootStepSound.Length)],
             1.1f - playerConditions.stamina.GetPercentage());
     }
@@ -54,7 +54,7 @@ public class PlayerSoundEvent : MonoBehaviour
 
     void Run()
     {
-        SoundManager.instance.PlaySFX
+        SoundManager.instance.PlaySFXVariable2
             (walkFootStepSound[UnityEngine.Random.Range(0, runFootStepSound.Length)],
             1.1f - playerConditions.stamina.GetPercentage());
     }

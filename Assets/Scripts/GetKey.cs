@@ -31,6 +31,8 @@ public class GetKey : MonoBehaviour
                 int keyIndex = key.value;
                 hasKeys[keyIndex] = true;
 
+                PlayerUI.instance.PlayerGetKey(hasKeys);
+
                 Destroy(nearObject);
 
                 if (keyIndex<walls.Length && hasKeys[keyIndex])

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6690149008580492012}
   - component: {fileID: 2435533052194777069}
   - component: {fileID: -6470145336186687324}
+  - component: {fileID: 3743413574250582342}
   m_Layer: 0
   m_Name: MonsterA
   m_TagString: Untagged
@@ -130,3 +131,26 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3743413574250582342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3050415821093257850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 952c739137767a34fa3baecaf82f5904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  searchSpeed: 5
+  followSpeed: 2
+  attackSpeed: 1
+  detectDistance: 1
+  safeDistance: 1
+  damage: 1
+  attackRate: 1
+  attackDistance: 1
+  searchDistance: 100000
+  followDistance: 100000
+  fieldOfView: 120

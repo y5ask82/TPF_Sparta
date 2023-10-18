@@ -7,6 +7,8 @@ public class FlashGrenade : MonoBehaviour
     private SphereCollider _sphereCollider;
     public bool Flashing = false;
 
+    public AudioClip flashGrenadeClip;
+
     private void Awake()
     {
         _sphereCollider = GetComponent<SphereCollider>();
@@ -26,6 +28,7 @@ public class FlashGrenade : MonoBehaviour
     {
         if (!Flashing)
         {
+            SoundManager.instance.PlaySFXVariable4(flashGrenadeClip, 0.1f);
             Flashing = true;
             _sphereCollider.radius = 3.5f;
             Invoke("Shut", 2f);
