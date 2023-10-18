@@ -123,7 +123,6 @@ public class MonsterAControl : MonoBehaviour
     {
         if(collision.transform.tag == "Player")
         {
-            //SoundManager.instance.PlaySFX("죽을때나는소리");
             GameObject test = Instantiate(Marking.I.Markings[4], PlayerController.instance.transform.position+new Vector3 (0,0.001f,0),Quaternion.identity);
             Marking.I.SaveMarkingData(test, Quaternion.identity);
             UIManager.Instance.UICoroutine("FadeIn");

@@ -40,7 +40,6 @@ public class PlayerController : MonoBehaviour
     public FlashGrenade _flashGrenade;
 
     [SerializeField] private AudioClip flashLightSFX;
-    [SerializeField] private LayerMask layerMask;
     [SerializeField] private Camera _camera;
      public MonsterCControl targetMonsterC;
     Vector3 viewPos;
@@ -193,8 +192,8 @@ public class PlayerController : MonoBehaviour
     }
     private void FlashToggle()
     {
-        bool active = !flashLight.gameObject.activeSelf;
-        flashLight.gameObject.SetActive(active);
+        bool active = !flashLight.enabled;
+        flashLight.enabled = active;
     }
 
     public void ControllOn()
