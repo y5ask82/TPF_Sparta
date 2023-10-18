@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip flashLightSFX;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Camera _camera;
-    [SerializeField] private GameObject targetMonsterC;
+     public MonsterCControl targetMonsterC;
     Vector3 viewPos;
 
 
@@ -90,7 +90,11 @@ public class PlayerController : MonoBehaviour
                 viewPos.y >= -0.2f && viewPos.y <= 1.2f &&
                 viewPos.z > 0 && viewPos.z <= 20)
             {
-                Debug.Log("cube");
+                targetMonsterC.agent.isStopped = false;
+            }
+            else
+            {
+                targetMonsterC.agent.isStopped = true;
             }
         }
     }

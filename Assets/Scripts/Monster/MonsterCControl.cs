@@ -21,13 +21,14 @@ public class MonsterCControl : MonoBehaviour
 
     public float fieldOfView = 120f; //시야각
 
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     //private SkinnedMeshRenderer[] meshRenderers; 메쉬 렌더링
 
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        PlayerController.instance.targetMonsterC = this;
         //animator = GetComponentInChildren<Animator>(); 애니메이션
         //meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>(); 메쉬렌더링
     }
