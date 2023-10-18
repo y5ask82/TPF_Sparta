@@ -18,7 +18,16 @@ public class MonsterSpawn : MonoBehaviour
     void Start()
     {
         SpawnMonsterA();
-        //처음 시작시 시간을 멈추고 행동을 시작하면 움직이도록 추가하기
+        SpawnMonsterB();
+        SpawnMonsterC();
+
+        //테스트항목, 게임 시작시 몬스터C가 정지
+        MonsterCControl monsterController = FindObjectOfType<MonsterCControl>();
+        if (monsterController != null)
+        {
+            monsterController.searchSpeed = 0.0f;
+            monsterController.followSpeed = 0.0f;
+        }
     }
 
     public void SpawnMonsterA()
@@ -27,7 +36,7 @@ public class MonsterSpawn : MonoBehaviour
         int x1 = Random.Range(11, 23);
         int z1 = Random.Range(40, 44);
 
-        curMonsterA.transform.position = new Vector3(x1, 1.0f, z1); //몬스터B의 소환 좌표 설정.
+        curMonsterA.transform.position = new Vector3(x1, 2.0f, z1); //몬스터B의 소환 좌표 설정.
         curMonsterA.GetComponent<NavMeshAgent>().enabled = false; //처음 생성될 때 NavMeshAgent 비활성화
     }
 
@@ -37,8 +46,7 @@ public class MonsterSpawn : MonoBehaviour
         int x2 = Random.Range(5, 13);
         int z2 = Random.Range(5, 11);
 
-        curMonsterB.transform.position = new Vector3(x2, 1.0f, z2); //몬스터B의 소환 좌표 설정.
-        curMonsterB.GetComponent<NavMeshAgent>().enabled = false; //처음 생성될 때 NavMeshAgent 비활성화
+        curMonsterB.transform.position = new Vector3(x2, 2.0f, z2); //몬스터B의 소환 좌표 설정.
     }
 
     public void SpawnMonsterC()
@@ -47,7 +55,7 @@ public class MonsterSpawn : MonoBehaviour
         int x3 = Random.Range(36, 44);
         int z3 = Random.Range(35, 44);
 
-        curMonsterC.transform.position = new Vector3(x3, 1.0f, z3); //몬스터C의 소환 좌표 설정.
+        curMonsterC.transform.position = new Vector3(x3, 2.0f, z3); //몬스터C의 소환 좌표 설정.
         curMonsterC.GetComponent<NavMeshAgent>().enabled = false; //처음 생성될 때 NavMeshAgent 비활성화
     }
 
@@ -61,6 +69,13 @@ public class MonsterSpawn : MonoBehaviour
     {
         Destroy(MonsterB);
         SpawnMonsterC();
+        //몬스터 C가 움직이지 않도록.
+        MonsterCControl monsterController = FindObjectOfType<MonsterCControl>();
+        if (monsterController != null)
+        {
+            monsterController.searchSpeed = 0.0f;
+            monsterController.followSpeed = 0.0f;
+        }
     }
 
     public void LastPhaseSpawn() //마지막 열쇠를 획득하면 작동.
@@ -69,6 +84,13 @@ public class MonsterSpawn : MonoBehaviour
         SpawnMonsterA();
         SpawnMonsterB();
         SpawnMonsterC();
+        //마지막 페이즈에서 몬스터 ABC 모두 출현, C도 A와 비슷하게 움직이도록
+        MonsterCControl monsterController = FindObjectOfType<MonsterCControl>();
+        if (monsterController != null)
+        {
+            monsterController.searchSpeed = 5.0f;
+            monsterController.followSpeed = 1.5f;
+        }
     }
 
     public void SafeHouseMonsterStop(Collider objec) //안전지대 들어가는 시스템 추가.
