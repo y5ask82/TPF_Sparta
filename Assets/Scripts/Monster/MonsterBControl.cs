@@ -9,7 +9,7 @@ public class MonsterBControl : MonoBehaviour
     public Vector3 targetPosition;
 
     // 이동 속도
-    public float moveSpeed = 5.0f;
+    public float moveSpeed = 3.0f;
 
     // 이동을 시작하는 플래그
     private bool isMoving = true;
