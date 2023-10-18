@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Color = UnityEngine.Color;
 
@@ -19,15 +20,22 @@ public class UIManager : MonoBehaviour
     public Slider Effectslider;
     public static UIManager Instance;
     public RawImage Ghost;
+    public RawImage DeadFadeinout;
     private bool IsUI;
     private Color color;
     private GameObject player;
-
+    [HideInInspector]
+    public bool IsDead;
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+            Instance = this;
+
+        else if (Instance != this)
+            Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
+
         UIPanel.SetActive(false);
-        player = GameObject.FindWithTag("Player");
         color = Ghost.GetComponent<RawImage>().color;
     }
     private void Start()
@@ -47,7 +55,7 @@ public class UIManager : MonoBehaviour
             Brightness.SetActive(false);
             Sound.SetActive(false);
             Time.timeScale = .0f;
-            player.GetComponent<PlayerController>().canLook = false;
+            PlayerController.instance.canLook = false;
             Cursor.lockState = CursorLockMode.None;
         }
         else
@@ -60,7 +68,7 @@ public class UIManager : MonoBehaviour
             Brightness.SetActive(false);
             Sound.SetActive(false);
             Time.timeScale = 1f;
-            player.GetComponent<PlayerController>().canLook = true;
+            PlayerController.instance.canLook = true;
             Cursor.lockState = CursorLockMode.Locked;
         }
      
@@ -133,5 +141,41 @@ public class UIManager : MonoBehaviour
         float val = Mathf.Lerp(0, 1, normalizedValue);
         SoundManager.instance.SetSFXVolume(val);
     }
+    
+    public void UICoroutine(string name)
+    {
+        StartCoroutine(name);
+    }
+   public IEnumerator FadeIn()
+    {
+        yield return new WaitForSecondsRealtime(0f);
+        float curTime = 0f;
+        float FadeTime = 1f;
+        Color c = DeadFadeinout.GetComponent<RawImage>().color;
+        while (curTime < FadeTime)
+        {
+            c.a = Mathf.Lerp(0f, 1f, curTime / FadeTime);
+            DeadFadeinout.GetComponent<RawImage>().color = c;
+            yield return 0;
+            curTime += Time.deltaTime;
+        }
+        SceneManager.LoadScene("KKHScene");
+        StartCoroutine(FadeOut());
 
+    }
+
+    IEnumerator FadeOut()
+    {
+        yield return new WaitForSecondsRealtime(0.2f);
+        float curTime = 0f;
+        float FadeTime = 1f;
+        Color c = DeadFadeinout.GetComponent<RawImage>().color;
+        while (curTime < FadeTime)
+        {
+            c.a = Mathf.Lerp(1f, 0f, curTime / FadeTime);
+            DeadFadeinout.GetComponent<RawImage>().color = c;
+            yield return 0;
+            curTime += Time.deltaTime;
+        }
+    }
 }

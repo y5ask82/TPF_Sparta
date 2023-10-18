@@ -5,6 +5,8 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem.HID;
+using UnityEngine.SceneManagement;
 
 public enum AIState
 {
@@ -27,7 +29,6 @@ public class MonsterAControl : MonoBehaviour
 
 
     public float fieldOfView = 120f; //시야각
-
     private NavMeshAgent agent;
     //private SkinnedMeshRenderer[] meshRenderers; 메쉬 렌더링
 
@@ -123,6 +124,17 @@ public class MonsterAControl : MonoBehaviour
                     Debug.Log("팔로우업데이트로 변경");
                 }
                 break;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.tag == "Player")
+        {
+            //SoundManager.instance.PlaySFX("죽을때나는소리");
+            GameObject test = Instantiate(Marking.I.Markings[4], PlayerController.instance.transform.position+new Vector3 (0,0.001f,0),Quaternion.identity);
+            Marking.I.SaveMarkingData(test, Quaternion.identity);
+            UIManager.Instance.UICoroutine("FadeIn");
         }
     }
 }

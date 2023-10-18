@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Marking
   - Key
+  - Blood
   layers:
   - Default
   - TransparentFX
