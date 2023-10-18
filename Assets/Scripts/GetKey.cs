@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class GetKey : MonoBehaviour
 {
-
+    //[SerializeField] GameObject Wall;
     GameObject nearObject;
     bool iDown;
     public GameObject[] keys;
+    public GameObject[] walls;
     public bool[] hasKeys;
 
     private void Update()
@@ -15,10 +16,11 @@ public class GetKey : MonoBehaviour
         GetInput();
         Interation();
     }
-    void GetInput()
+    void GetInput()//키 입력 
     {
         iDown = Input.GetButtonDown("Interation");
     }
+
     void Interation()
     {
         if (iDown && nearObject != null)
@@ -32,6 +34,11 @@ public class GetKey : MonoBehaviour
                 PlayerUI.instance.PlayerGetKey(hasKeys);
 
                 Destroy(nearObject);
+
+                if (keyIndex<walls.Length && hasKeys[keyIndex])
+                {
+                    Destroy(walls[keyIndex]);
+                }
             }
         }
     }
@@ -41,7 +48,6 @@ public class GetKey : MonoBehaviour
         {
             nearObject = other.gameObject;
         }
-        Debug.Log("hi");
     }
     void OnTriggerExit(Collider other)
     {
@@ -50,6 +56,5 @@ public class GetKey : MonoBehaviour
             nearObject = null;
         }
     }
-
 
 }
