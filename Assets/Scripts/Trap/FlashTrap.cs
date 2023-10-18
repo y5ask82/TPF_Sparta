@@ -10,7 +10,9 @@ public class FlashTrap : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            flashLight.gameObject.SetActive(false);
+            //flashLight.gameObject.SetActive(false);
+            bool active = !flashLight.enabled;
+            flashLight.enabled = active;
         }
     }
 }
