@@ -4,29 +4,19 @@ using UnityEngine;
 
 public class GetKey : MonoBehaviour
 {
+    //[SerializeField] GameObject Wall;
     GameObject nearObject;
-    [SerializeField] GameObject Timer;
     bool iDown;
     public GameObject[] keys;
     public GameObject[] walls;
     public bool[] hasKeys;
-
-    public int keysToCollect = 4; // 총 획득해야 할 열쇠의 개수
-    private int collectedKeys = 0;
-    private TimerUI timerUI;
-
-    void Start()
-    {
-        timerUI = FindObjectOfType<TimerUI>();
-    }
 
     private void Update()
     {
         GetInput();
         Interation();
     }
-
-    void GetInput()
+    void GetInput()//키 입력 
     {
         iDown = Input.GetButtonDown("Interation");
     }
@@ -40,25 +30,18 @@ public class GetKey : MonoBehaviour
                 Key key = nearObject.GetComponent<Key>();
                 int keyIndex = key.value;
                 hasKeys[keyIndex] = true;
-                collectedKeys++;
 
                 PlayerUI.instance.PlayerGetKey(hasKeys);
 
                 Destroy(nearObject);
 
-                if (keyIndex < walls.Length && hasKeys[keyIndex])
+                if (keyIndex<walls.Length && hasKeys[keyIndex])
                 {
                     Destroy(walls[keyIndex]);
-                }
-
-                if (collectedKeys == keysToCollect)
-                {
-                    Timer.SetActive(true);
                 }
             }
         }
     }
-
     void OnTriggerStay(Collider other)
     {
         if (other.tag == "Key")
@@ -73,4 +56,5 @@ public class GetKey : MonoBehaviour
             nearObject = null;
         }
     }
+
 }
