@@ -12,8 +12,11 @@ public class UIManager : MonoBehaviour
     public GameObject Btns;
     public GameObject Setting;
     public GameObject Brightness;
+    public GameObject Sound;
     public Light light;
     public Slider slider;
+    public Slider Backslider;
+    public Slider Effectslider;
     public static UIManager Instance;
     public RawImage Ghost;
     private bool IsUI;
@@ -27,6 +30,11 @@ public class UIManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         color = Ghost.GetComponent<RawImage>().color;
     }
+    private void Start()
+    {
+        Backslider.value = SoundManager.instance.GetBGMVolume();
+        Effectslider.value = SoundManager.instance.GetSFXVolume();
+    }
     public void PopPanel()
     {
         if(UIPanel.gameObject.activeSelf == false)
@@ -37,6 +45,7 @@ public class UIManager : MonoBehaviour
             Btns.SetActive(true);
             Setting.SetActive(false);
             Brightness.SetActive(false);
+            Sound.SetActive(false);
             Time.timeScale = .0f;
             player.GetComponent<PlayerController>().canLook = false;
             Cursor.lockState = CursorLockMode.None;
@@ -49,6 +58,7 @@ public class UIManager : MonoBehaviour
             Btns.SetActive(false);
             Setting.SetActive(false);
             Brightness.SetActive(false);
+            Sound.SetActive(false);
             Time.timeScale = 1f;
             player.GetComponent<PlayerController>().canLook = true;
             Cursor.lockState = CursorLockMode.Locked;
@@ -67,7 +77,6 @@ public class UIManager : MonoBehaviour
          color.a += 0.00001f;
         Ghost.GetComponent<RawImage>().color = color;
         }
-     
     }
 
     public void OnClickCountinue()
@@ -91,6 +100,7 @@ public class UIManager : MonoBehaviour
     public void OnClickBright()
     {
         Setting.SetActive(false);
+        Sound.SetActive(false);
         Brightness.SetActive(true);
     }
     public void OnClickExit()
@@ -105,5 +115,23 @@ public class UIManager : MonoBehaviour
         light.transform.rotation = Quaternion.Euler(rotationX, 0, 0);
     }
 
+    public void OnClickSound()
+    {
+        Setting.SetActive(false);
+        Brightness.SetActive(false);
+        Sound.SetActive(true);
+    }
+    public void SetbackSound()
+    {
+        float normalizedValue = Backslider.value;
+        float val = Mathf.Lerp(0, 1, normalizedValue);
+        SoundManager.instance.SetBGMVolume(val);
+    }
+    public void SeteffectSound()
+    {
+        float normalizedValue = Effectslider.value;
+        float val = Mathf.Lerp(0, 1, normalizedValue);
+        SoundManager.instance.SetSFXVolume(val);
+    }
 
 }
