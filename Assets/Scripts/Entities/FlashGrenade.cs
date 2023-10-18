@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FlashGrenade : MonoBehaviour
@@ -19,8 +20,17 @@ public class FlashGrenade : MonoBehaviour
     {
         if(other.gameObject.tag == "Enemy")
         {
-
+            other.gameObject.SetActive(false);
+            StartCoroutine(RespawnMonster(other.gameObject));
         }
+    }
+
+    IEnumerator RespawnMonster(GameObject go)
+    {
+        yield return new WaitForSeconds(5f);
+        go.SetActive(true);
+
+        yield break;
     }
 
 
