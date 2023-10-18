@@ -28,8 +28,11 @@ public class GetKey : MonoBehaviour
             if (nearObject.tag == "Key")
             {
                 //섬광탄 충전
-                PlayerController.instance.flashGrenadeNum++;
-                PlayerUI.instance.UpdateFlashGrenadeUI();
+                if (PlayerController.instance.flashGrenadeNum < 3)
+                {
+                    PlayerController.instance.flashGrenadeNum++;
+                    PlayerUI.instance.UpdateFlashGrenadeUI();
+                }
 
                 Key key = nearObject.GetComponent<Key>();
                 int keyIndex = key.value;
