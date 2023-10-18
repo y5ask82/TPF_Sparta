@@ -9,45 +9,46 @@ using UnityEngine.AI;
 public class MonsterCControl : MonoBehaviour
 {
     [Header("Stats")]
-    public float searchSpeed; //Searching ÁßÀÇ ÀÌµ¿ ¼Óµµ
-    public float followSpeed; //¹ß°ßÇÏ°í FollowingÁßÀÇ ÀÌµ¿ ¼Óµµ
+    public float searchSpeed; //Searching ì¤‘ì˜ ì´ë™ ì†ë„
+    public float followSpeed; //ë°œê²¬í•˜ê³  Followingì¤‘ì˜ ì´ë™ ì†ë„
 
     [Header("AI")]
     private AIState aiState;
 
-    private float playerDistance; //ÇÃ·¹ÀÌ¾î¿Í ¸ó½ºÅÍ°£ÀÇ °Å¸®
-    public float searchDistance; //¸ó½ºÅÍ
-    public float followDistance; //¸ó½ºÅÍ°¡ ÆÈ·Î¿ì ¸ğµåÀÌ±â À§ÇÑ °Å¸®
+    private float playerDistance; //í”Œë ˆì´ì–´ì™€ ëª¬ìŠ¤í„°ê°„ì˜ ê±°ë¦¬
+    public float searchDistance; //ëª¬ìŠ¤í„°
+    public float followDistance; //ëª¬ìŠ¤í„°ê°€ íŒ”ë¡œìš° ëª¨ë“œì´ê¸° ìœ„í•œ ê±°ë¦¬
 
-    public float fieldOfView = 120f; //½Ã¾ß°¢
+    public float fieldOfView = 120f; //ì‹œì•¼ê°
 
     public NavMeshAgent agent;
-    //private SkinnedMeshRenderer[] meshRenderers; ¸Ş½¬ ·»´õ¸µ
+    //private SkinnedMeshRenderer[] meshRenderers; ë©”ì‰¬ ë Œë”ë§
 
-    private GetKey getKeyScript; //GetKey ½ºÅ©¸³Æ® ºÒ·¯¿À±â
+    private GetKey getKeyScript; //GetKey ìŠ¤í¬ë¦½íŠ¸ ë¶ˆëŸ¬ì˜¤ê¸°
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        getKeyScript = FindObjectOfType<GetKey>();
-        //animator = GetComponentInChildren<Animator>(); ¾Ö´Ï¸ŞÀÌ¼Ç
-        //meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>(); ¸Ş½¬·»´õ¸µ
+
+        PlayerController.instance.targetMonsterC = this;
+        //animator = GetComponentInChildren<Animator>(); ì• ë‹ˆë©”ì´ì…˜
+        //meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>(); ë©”ì‰¬ë Œë”ë§
     }
 
     private void Start()
     {
-        SetState(AIState.Searching); //Ã³À½ ½ÃÀÛÇÏ¸é ¸ó½ºÅÍ´Â Searching »óÅÂ.
+        SetState(AIState.Searching); //ì²˜ìŒ ì‹œì‘í•˜ë©´ ëª¬ìŠ¤í„°ëŠ” Searching ìƒíƒœ.
         agent.isStopped = false;
         GetComponent<NavMeshAgent>().enabled = true;
     }
 
     private void Update()
     {
-        playerDistance = Vector3.Distance(transform.position, PlayerController.instance.transform.position); //ÇÃ·¹ÀÌ¾î À§Ä¡ ÁÂÇ¥È­
+        playerDistance = Vector3.Distance(transform.position, PlayerController.instance.transform.position); //í”Œë ˆì´ì–´ ìœ„ì¹˜ ì¢Œí‘œí™”
 
-        //animator.SetBool("Moving", aiState != AIState.Idle); ¾Ö´Ï¸ŞÀÌ¼Ç ±â´É
+        //animator.SetBool("Moving", aiState != AIState.Idle); ì• ë‹ˆë©”ì´ì…˜ ê¸°ëŠ¥
 
-        switch (aiState) //°¢ AI  ½ºÅ×ÀÌÆ®ÀÏ¶§ ÇØ´ç ¾÷µ¥ÀÌÆ® ±â´É È°¼ºÈ­
+        switch (aiState) //ê° AI  ìŠ¤í…Œì´íŠ¸ì¼ë•Œ í•´ë‹¹ ì—…ë°ì´íŠ¸ ê¸°ëŠ¥ í™œì„±í™”
         {
             case AIState.Searching: SearchUpdate(); break;
             case AIState.Following: FollowUpdate(); break;
@@ -56,11 +57,11 @@ public class MonsterCControl : MonoBehaviour
 
     private void SearchUpdate()
     {
-        if (playerDistance < searchDistance || !IsPlayerInFieldOfView()) //ÇÃ·¹ÀÌ¾î¿Í ¸ó½ºÅÍ°£ÀÇ °Å¸®°¡ search °Å¸®º¸´Ù ¸Ö°Å³ª ¶Ç´Â ÇÃ·¹ÀÌ¾î°¡ ¸ó½ºÅÍÀÇ ½Ã¾ß¿¡ ¾øÀ¸¸é
+        if (playerDistance < searchDistance || !IsPlayerInFieldOfView()) //í”Œë ˆì´ì–´ì™€ ëª¬ìŠ¤í„°ê°„ì˜ ê±°ë¦¬ê°€ search ê±°ë¦¬ë³´ë‹¤ ë©€ê±°ë‚˜ ë˜ëŠ” í”Œë ˆì´ì–´ê°€ ëª¬ìŠ¤í„°ì˜ ì‹œì•¼ì— ì—†ìœ¼ë©´
         {
-            agent.isStopped = false;
+            //agent.isStopped = false;
             NavMeshPath path = new NavMeshPath();
-            if (agent.CalculatePath(PlayerController.instance.transform.position, path)) //ÇÃ·¹ÀÌ¾î¸¦ ÇâÇÑ °æ·Î¸¦ Ã£°í ÀÌµ¿ÇÏµµ·Ï
+            if (agent.CalculatePath(PlayerController.instance.transform.position, path)) //í”Œë ˆì´ì–´ë¥¼ í–¥í•œ ê²½ë¡œë¥¼ ì°¾ê³  ì´ë™í•˜ë„ë¡
             {
                 agent.SetDestination(PlayerController.instance.transform.position);
             }
@@ -74,7 +75,7 @@ public class MonsterCControl : MonoBehaviour
 
     private void FollowUpdate()
     {
-        agent.isStopped = false;
+        //agent.isStopped = false;
         NavMeshPath path = new NavMeshPath();
         if (agent.CalculatePath(PlayerController.instance.transform.position, path))
         {
@@ -82,7 +83,7 @@ public class MonsterCControl : MonoBehaviour
         }
     }
 
-    bool IsPlayerInFieldOfView() //ÇÃ·¹ÀÌ¾î°¡ ½Ã¾ß¿¡ ÀÖ´ÂÁö È®ÀÎ.
+    bool IsPlayerInFieldOfView() //í”Œë ˆì´ì–´ê°€ ì‹œì•¼ì— ìˆëŠ”ì§€ í™•ì¸.
     {
         Vector3 directionToPlayer = PlayerController.instance.transform.position - transform.position;
         float angle = Vector3.Angle(transform.forward, directionToPlayer);
@@ -117,11 +118,11 @@ public class MonsterCControl : MonoBehaviour
                 int hasKeyAmount = getKeyScript.hasKeys.Length;
                 if (hasKeyAmount < 3)
                 {
-                    //¸ó½ºÅÍC¿¡°Ô KeyÅÂ±× ´Ş¾ÆÁÖ±â
+                    //ëª¬ìŠ¤í„°Cì—ê²Œ Keyíƒœê·¸ ë‹¬ì•„ì£¼ê¸°
                 }
                 if (hasKeyAmount > 2)
                 {
-                    //SoundManager.instance.PlaySFX("Á×À»¶§³ª´Â¼Ò¸®");
+                    //SoundManager.instance.PlaySFX("ì£½ì„ë•Œë‚˜ëŠ”ì†Œë¦¬");
                     GameObject test = Instantiate(Marking.I.Markings[4], PlayerController.instance.transform.position + new Vector3(0, 0.001f, 0), Quaternion.identity);
                     Marking.I.SaveMarkingData(test, Quaternion.identity);
                     UIManager.Instance.UICoroutine("FadeIn");
