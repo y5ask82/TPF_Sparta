@@ -11,7 +11,7 @@ public class GetKey : MonoBehaviour
     public GameObject[] walls;
     public bool[] hasKeys;
 
-    public int keysToCollect = 4; // 총 획득해야 할 열쇠의 개수
+    public int keysToCollect = 3; // 총 획득해야 할 열쇠의 개수
     private int collectedKeys = 0;
     private TimerUI timerUI;
 
