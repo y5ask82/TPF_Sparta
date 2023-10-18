@@ -794,6 +794,11 @@ Transform:
   m_Father: {fileID: 1504345656}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!108 &963413675 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 5629695918658577510, guid: dd9cbf74894facc4589adcede87b833f, type: 3}
+  m_PrefabInstance: {fileID: 1821933835}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1027570963 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5170642745026997536, guid: 0bec4474ba1d14d6dae521ab15bffa56, type: 3}
@@ -1508,6 +1513,10 @@ PrefabInstance:
       propertyPath: walls.Array.data[3]
       value: 
       objectReference: {fileID: 917433215}
+    - target: {fileID: 2311320572949893342, guid: dd9cbf74894facc4589adcede87b833f, type: 3}
+      propertyPath: flashLight
+      value: 
+      objectReference: {fileID: 963413675}
     - target: {fileID: 4127077263672673828, guid: dd9cbf74894facc4589adcede87b833f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.08
@@ -2132,7 +2141,7 @@ PrefabInstance:
     - target: {fileID: 6755491177709345896, guid: 0bec4474ba1d14d6dae521ab15bffa56, type: 3}
       propertyPath: flashLight
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 963413675}
     - target: {fileID: 8542338708415005553, guid: 0bec4474ba1d14d6dae521ab15bffa56, type: 3}
       propertyPath: m_Name
       value: FlashTrap
