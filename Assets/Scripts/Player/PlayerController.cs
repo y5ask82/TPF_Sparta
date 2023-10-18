@@ -40,7 +40,6 @@ public class PlayerController : MonoBehaviour
     public FlashGrenade _flashGrenade;
 
     [SerializeField] private AudioClip flashLightSFX;
-    [SerializeField] private LayerMask layerMask;
     [SerializeField] private Camera _camera;
      public MonsterCControl targetMonsterC;
     Vector3 viewPos;

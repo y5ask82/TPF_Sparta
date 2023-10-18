@@ -560,7 +560,7 @@ MonoBehaviour:
   canLook: 1
   walkParameterName: Walk
   runParameterName: Run
-  flashGrenadeNum: 0
+  flashGrenadeNum: 3
   _flashGrenade: {fileID: 0}
   flashLightSFX: {fileID: 8300000, guid: d8fc7ceae0e775248a0466f73bec4ec1, type: 3}
   layerMask:
