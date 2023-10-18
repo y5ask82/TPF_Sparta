@@ -5,7 +5,6 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.InputSystem;
-using static UnityEngine.GraphicsBuffer;
 
 public class PlayerController : MonoBehaviour
 {
@@ -40,11 +39,6 @@ public class PlayerController : MonoBehaviour
     public FlashGrenade _flashGrenade;
 
     [SerializeField] private AudioClip flashLightSFX;
-    [SerializeField] private LayerMask layerMask;
-    [SerializeField] private Camera _camera;
-     public MonsterCControl targetMonsterC;
-    Vector3 viewPos;
-
 
 
     public static PlayerController instance;
@@ -81,22 +75,6 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Marking.I.IndexChange(); //�ٰ��� ���� ��ŷ ������ ����
-
-        if (targetMonsterC)
-        {
-            Vector3 viewPos = _camera.WorldToViewportPoint(targetMonsterC.transform.position);
-
-            if (viewPos.x >= -0.2f && viewPos.x <= 1.2f &&
-                viewPos.y >= -0.2f && viewPos.y <= 1.2f &&
-                viewPos.z > 0 && viewPos.z <= 20)
-            {
-                targetMonsterC.agent.isStopped = true;
-            }
-            else
-            {
-                targetMonsterC.agent.isStopped = false;
-            }
-        }
     }
     private void LateUpdate()
     {
@@ -193,8 +171,8 @@ public class PlayerController : MonoBehaviour
     }
     private void FlashToggle()
     {
-        bool active = !flashLight.gameObject.activeSelf;
-        flashLight.gameObject.SetActive(active);
+        bool active = !flashLight.enabled;
+        flashLight.enabled = active;
     }
 
     public void ControllOn()

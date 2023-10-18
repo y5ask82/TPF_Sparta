@@ -82,15 +82,7 @@ public class Marking : MonoBehaviour
         markingData.y = obj.transform.position.y;
         markingData.z = obj.transform.position.z;
         markingData.rotation = qua;
-        if(obj.tag == "Blood")
-        {
-            markingData.MarkingIndex = 4;
-        }
-        else
-        {
-            markingData.MarkingIndex = index;
-        }
-      
+        markingData.MarkingIndex = index;
         string markingDataJson = JsonUtility.ToJson(markingData);
         string path = Path.Combine(Application.dataPath, "MarkingData.json");
         File.AppendAllText(path, markingDataJson + "\n");
