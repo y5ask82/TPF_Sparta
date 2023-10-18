@@ -34,10 +34,13 @@ public class MonsterBControl : MonoBehaviour
             transform.Translate(moveAmount);
 
             // 목표 위치에 도달하면 이동 종료
+            if (Vector3.Distance(transform.position, targetPosition) < 10.0f)
+            {
+                moveSpeed = 1.0f;
+            }
             if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
             {
                 isMoving = false;
-                Debug.Log("목표 위치에 도달했습니다.");
             }
         }
     }

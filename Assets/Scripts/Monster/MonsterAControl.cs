@@ -70,11 +70,6 @@ public class MonsterAControl : MonoBehaviour
                 agent.SetDestination(PlayerController.instance.transform.position);
                 Debug.Log("서치업데이트" + PlayerController.instance.transform.position);
             }
-
-            else //경로를 찾지 못할 경우 에러 출력
-            {
-                Debug.Log("SearchUpdate에서 플레이어를 향한 경로를 찾지 못했습니다.");
-            }
         }
 
         if(playerDistance < followDistance)
@@ -90,11 +85,6 @@ public class MonsterAControl : MonoBehaviour
         if (agent.CalculatePath(PlayerController.instance.transform.position, path))
         {
             agent.SetDestination(PlayerController.instance.transform.position);
-            Debug.Log("팔로우업데이트 " + PlayerController.instance.transform.position);
-        }
-        else
-        {
-            Debug.Log("FollowUpdate에서 플레이어를 향한 경로를 찾지 못했습니다.");
         }
     }
 
@@ -114,14 +104,12 @@ public class MonsterAControl : MonoBehaviour
                 {
                     agent.speed = searchSpeed;
                     agent.isStopped = false;
-                    Debug.Log("서치업데이트로 변경");
                 }
                 break;
             case AIState.Following:
                 {
                     agent.speed = followSpeed;
                     agent.isStopped = false;
-                    Debug.Log("팔로우업데이트로 변경");
                 }
                 break;
         }
