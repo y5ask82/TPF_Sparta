@@ -13,7 +13,7 @@ public class MonsterSpawn : MonoBehaviour
     public GameObject MonsterC;
     private GameObject curMonsterC;
 
-    private GetKey getKeyScript; //GetKey 스크립트 불러오기
+    private int keyamount;
 
     void Start()
     {
@@ -28,11 +28,6 @@ public class MonsterSpawn : MonoBehaviour
             monsterController.searchSpeed = 0.0f;
             monsterController.followSpeed = 0.0f;
         }
-    }
-
-    private void Awake()
-    {
-        getKeyScript = FindObjectOfType<GetKey>();
     }
 
     public void SpawnMonsterA()
@@ -74,7 +69,6 @@ public class MonsterSpawn : MonoBehaviour
     {
         Destroy(MonsterB);
         SpawnMonsterC();
-
         //몬스터 C가 움직이지 않도록.
         MonsterCControl monsterController = FindObjectOfType<MonsterCControl>();
         if (monsterController != null)
@@ -90,7 +84,6 @@ public class MonsterSpawn : MonoBehaviour
         SpawnMonsterA();
         SpawnMonsterB();
         SpawnMonsterC();
-
         //마지막 페이즈에서 몬스터 ABC 모두 출현, C도 A와 비슷하게 움직이도록
         MonsterCControl monsterController = FindObjectOfType<MonsterCControl>();
         if (monsterController != null)
@@ -100,34 +93,15 @@ public class MonsterSpawn : MonoBehaviour
         }
     }
 
-    public void SafeHouseEnter(Collider objec) //안전지대에 들어갈 때, 연결 필요함.
+    public void SafeHouseMonsterStop(Collider objec) //안전지대 들어가는 시스템 추가.
     {
-        if (getKeyScript != null)
+        if(keyamount < 3) //보유한 열쇠 개수가 3보다 적을 때.
         {
-            int hasKeyAmount = getKeyScript.hasKeys.Length;
-            if (hasKeyAmount < 1) //1라운드에서 몬스터A 제거
+            if (objec.CompareTag("Player")) //플레이어가 안전지대에 들어가면 몬스터 비활성화.
             {
-                Destroy(MonsterA);
-            }
-            if (hasKeyAmount < 2) //2라운드에서 몬스터B 제거
-            {
-                Destroy(MonsterB);
-            }
-        }
-    }
-
-    public void SafeHouseOut(Collider objec) //안전지대에서 나왔을 때, 연결 필요함.
-    {
-        if (getKeyScript != null)
-        {
-            int hasKeyAmount = getKeyScript.hasKeys.Length;
-            if (hasKeyAmount < 1) //1라운드에서 몬스터A 재생성
-            {
-                SpawnMonsterA();
-            }
-            if(hasKeyAmount < 2) //2라운드에서 몬스터B 재생성
-            {
-                SpawnMonsterB();
+                curMonsterA.GetComponent<MonsterAControl>().enabled = false;
+                curMonsterB.GetComponent<MonsterAControl>().enabled = false;
+                curMonsterC.GetComponent<MonsterAControl>().enabled = false;
             }
         }
     }

@@ -90,11 +90,11 @@ public class PlayerController : MonoBehaviour
                 viewPos.y >= -0.2f && viewPos.y <= 1.2f &&
                 viewPos.z > 0 && viewPos.z <= 20)
             {
-                targetMonsterC.agent.isStopped = false;
+                targetMonsterC.agent.isStopped = true;
             }
             else
             {
-                targetMonsterC.agent.isStopped = true;
+                targetMonsterC.agent.isStopped = false;
             }
         }
     }

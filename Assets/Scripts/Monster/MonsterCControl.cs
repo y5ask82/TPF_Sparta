@@ -57,17 +57,17 @@ public class MonsterCControl : MonoBehaviour
     {
         if (playerDistance < searchDistance || !IsPlayerInFieldOfView()) //플레이어와 몬스터간의 거리가 search 거리보다 멀거나 또는 플레이어가 몬스터의 시야에 없으면
         {
-            agent.isStopped = false;
+            //agent.isStopped = false;
             NavMeshPath path = new NavMeshPath();
             if (agent.CalculatePath(PlayerController.instance.transform.position, path)) //플레이어를 향한 경로를 찾고 이동하도록
             {
                 agent.SetDestination(PlayerController.instance.transform.position);
-                Debug.Log("서치업데이트" + PlayerController.instance.transform.position);
+                //Debug.Log("서치업데이트" + PlayerController.instance.transform.position);
             }
 
             else //경로를 찾지 못할 경우 에러 출력
             {
-                Debug.Log("SearchUpdate에서 플레이어를 향한 경로를 찾지 못했습니다.");
+                //Debug.Log("SearchUpdate에서 플레이어를 향한 경로를 찾지 못했습니다.");
             }
         }
 
@@ -79,16 +79,16 @@ public class MonsterCControl : MonoBehaviour
 
     private void FollowUpdate()
     {
-        agent.isStopped = false;
+        //agent.isStopped = false;
         NavMeshPath path = new NavMeshPath();
         if (agent.CalculatePath(PlayerController.instance.transform.position, path))
         {
             agent.SetDestination(PlayerController.instance.transform.position);
-            Debug.Log("팔로우업데이트 " + PlayerController.instance.transform.position);
+            //Debug.Log("팔로우업데이트 " + PlayerController.instance.transform.position);
         }
         else
         {
-            Debug.Log("FollowUpdate에서 플레이어를 향한 경로를 찾지 못했습니다.");
+            //Debug.Log("FollowUpdate에서 플레이어를 향한 경로를 찾지 못했습니다.");
         }
     }
 
