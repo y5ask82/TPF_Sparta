@@ -125,9 +125,4 @@ public class MonsterAControl : MonoBehaviour
             UIManager.Instance.UICoroutine("FadeIn");
         }
     }
-
-    internal void Flashed()
-    {
-        throw new NotImplementedException();
-    }
 }
