@@ -21,9 +21,12 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
     public RawImage Ghost;
     public RawImage DeadFadeinout;
+    public RawImage DeadGhost;
     private bool IsUI;
     private Color color;
     private GameObject player;
+    public AudioClip DeathSound1;
+    public AudioClip DeathSound2;
     [HideInInspector]
     public bool IsDead;
     private void Awake()
@@ -148,13 +151,18 @@ public class UIManager : MonoBehaviour
     }
    public IEnumerator FadeIn()
     {
+        SoundManager.instance.PlaySFX(DeathSound1);
+        SoundManager.instance.PlaySFX(DeathSound2);
         yield return new WaitForSecondsRealtime(0f);
         float curTime = 0f;
         float FadeTime = 1f;
         Color c = DeadFadeinout.GetComponent<RawImage>().color;
+        Color c2 = DeadGhost.GetComponent<RawImage>().color;
         while (curTime < FadeTime)
         {
             c.a = Mathf.Lerp(0f, 1f, curTime / FadeTime);
+            c2.a = Mathf.Lerp(1f, 0f, curTime / FadeTime);
+            DeadGhost.GetComponent<RawImage>().color= c2;
             DeadFadeinout.GetComponent<RawImage>().color = c;
             yield return 0;
             curTime += Time.deltaTime;
@@ -170,6 +178,7 @@ public class UIManager : MonoBehaviour
         float curTime = 0f;
         float FadeTime = 1f;
         Color c = DeadFadeinout.GetComponent<RawImage>().color;
+        Color c2 = DeadGhost.GetComponent<RawImage>().color;
         while (curTime < FadeTime)
         {
             c.a = Mathf.Lerp(1f, 0f, curTime / FadeTime);
