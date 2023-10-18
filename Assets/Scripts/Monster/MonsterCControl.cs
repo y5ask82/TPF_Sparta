@@ -6,13 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum AIState
-{
-   Searching,
-   Following,
-}
-
-public class MonsterAControl : MonoBehaviour
+public class MonsterCControl : MonoBehaviour
 {
     [Header("Stats")]
     public float searchSpeed; //Searching 중의 이동 속도
@@ -25,11 +19,11 @@ public class MonsterAControl : MonoBehaviour
     public float searchDistance; //몬스터가 서치 모드이기 위한 거리
     public float followDistance; //몬스터가 팔로우 모드이기 위한 거리
 
-
     public float fieldOfView = 120f; //시야각
 
     private NavMeshAgent agent;
     //private SkinnedMeshRenderer[] meshRenderers; 메쉬 렌더링
+
 
     private void Awake()
     {
