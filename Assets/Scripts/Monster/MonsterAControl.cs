@@ -31,7 +31,6 @@ public class MonsterAControl : MonoBehaviour
 
     public float fieldOfView = 120f; //시야각
     private NavMeshAgent agent;
-    private bool isMoving = true;
     //private SkinnedMeshRenderer[] meshRenderers; 메쉬 렌더링
 
     private void Awake()
