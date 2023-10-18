@@ -21,13 +21,15 @@ public class MonsterCControl : MonoBehaviour
 
     public float fieldOfView = 120f; //시야각
 
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     //private SkinnedMeshRenderer[] meshRenderers; 메쉬 렌더링
 
+    private GetKey getKeyScript; //GetKey 스크립트 불러오기
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        getKeyScript = FindObjectOfType<GetKey>();
         //animator = GetComponentInChildren<Animator>(); 애니메이션
         //meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>(); 메쉬렌더링
     }
@@ -61,12 +63,6 @@ public class MonsterCControl : MonoBehaviour
             if (agent.CalculatePath(PlayerController.instance.transform.position, path)) //플레이어를 향한 경로를 찾고 이동하도록
             {
                 agent.SetDestination(PlayerController.instance.transform.position);
-                Debug.Log("서치업데이트" + PlayerController.instance.transform.position);
-            }
-
-            else //경로를 찾지 못할 경우 에러 출력
-            {
-                Debug.Log("SearchUpdate에서 플레이어를 향한 경로를 찾지 못했습니다.");
             }
         }
 
@@ -83,11 +79,6 @@ public class MonsterCControl : MonoBehaviour
         if (agent.CalculatePath(PlayerController.instance.transform.position, path))
         {
             agent.SetDestination(PlayerController.instance.transform.position);
-            Debug.Log("팔로우업데이트 " + PlayerController.instance.transform.position);
-        }
-        else
-        {
-            Debug.Log("FollowUpdate에서 플레이어를 향한 경로를 찾지 못했습니다.");
         }
     }
 
@@ -107,27 +98,38 @@ public class MonsterCControl : MonoBehaviour
                 {
                     agent.speed = searchSpeed;
                     agent.isStopped = false;
-                    Debug.Log("서치업데이트로 변경");
                 }
                 break;
             case AIState.Following:
                 {
                     agent.speed = followSpeed;
                     agent.isStopped = false;
-                    Debug.Log("팔로우업데이트로 변경");
                 }
                 break;
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        
         if (collision.transform.tag == "Player")
         {
-            //SoundManager.instance.PlaySFX("죽을때나는소리");
-            GameObject test = Instantiate(Marking.I.Markings[4], PlayerController.instance.transform.position + new Vector3(0, 0.001f, 0), Quaternion.identity);
-            Marking.I.SaveMarkingData(test, Quaternion.identity);
-            UIManager.Instance.UICoroutine("FadeIn");
+            if (getKeyScript != null)
+            {
+                int hasKeyAmount = getKeyScript.hasKeys.Length;
+                if (hasKeyAmount < 3)
+                {
+                    //몬스터C에게 Key태그 달아주기
+                }
+                if (hasKeyAmount > 2)
+                {
+                    //SoundManager.instance.PlaySFX("죽을때나는소리");
+                    GameObject test = Instantiate(Marking.I.Markings[4], PlayerController.instance.transform.position + new Vector3(0, 0.001f, 0), Quaternion.identity);
+                    Marking.I.SaveMarkingData(test, Quaternion.identity);
+                    UIManager.Instance.UICoroutine("FadeIn");
+                }
+            }
+
+            
+            
         }
     }
 }
