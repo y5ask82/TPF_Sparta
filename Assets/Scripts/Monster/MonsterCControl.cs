@@ -16,7 +16,7 @@ public class MonsterCControl : MonoBehaviour
     private AIState aiState;
 
     private float playerDistance; //플레이어와 몬스터간의 거리
-    public float searchDistance; //몬스터가 서치 모드이기 위한 거리
+    public float searchDistance; //몬스터
     public float followDistance; //몬스터가 팔로우 모드이기 위한 거리
 
     public float fieldOfView = 120f; //시야각
@@ -121,6 +121,7 @@ public class MonsterCControl : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        
         if (collision.transform.tag == "Player")
         {
             //SoundManager.instance.PlaySFX("죽을때나는소리");
