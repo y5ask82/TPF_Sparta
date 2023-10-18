@@ -46,6 +46,8 @@ public class GetKey : MonoBehaviour
                 {
                     Destroy(walls[keyIndex]);
                 }
+
+
             }
         }
     }
