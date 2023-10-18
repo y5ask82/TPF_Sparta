@@ -328,7 +328,7 @@ Transform:
   - {fileID: 8374395077529547270}
   - {fileID: 8967054035632326033}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4819610656053058375
 MonoBehaviour:
@@ -608,6 +608,8 @@ MonoBehaviour:
   - {fileID: 6270081241379127209, guid: 1fe11eb5b5aadbf459d9ede97e591a03, type: 3}
   - {fileID: 6270081241379127209, guid: 52a6d992d41e29e4b92f1ffa3e4a71ba, type: 3}
   - {fileID: 6270081241379127209, guid: 3b34adb402c277e4ab66ddd330505804, type: 3}
+  - {fileID: 0}
+  - {fileID: 7049713692034838217, guid: e9eec6a031652b543aabdc5102137e94, type: 3}
   index: 0
 --- !u!114 &975337723070312923
 MonoBehaviour:
