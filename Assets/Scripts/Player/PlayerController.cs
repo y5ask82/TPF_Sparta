@@ -171,8 +171,8 @@ public class PlayerController : MonoBehaviour
     }
     private void FlashToggle()
     {
-        bool active = !flashLight.gameObject.activeSelf;
-        flashLight.gameObject.SetActive(active);
+        bool active = !flashLight.enabled;
+        flashLight.enabled = active;
     }
 
     public void ControllOn()
