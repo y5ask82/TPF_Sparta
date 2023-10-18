@@ -35,10 +35,10 @@ public class PlayerSoundEvent : MonoBehaviour
         heartBeatTerm = playerConditions.stamina.GetPercentage()+0.5f;
         if(term>=heartBeatTerm)
         {
-            SoundManager.instance.PlaySFXVariable1(
-                runHeartBeatSound[UnityEngine.Random.Range(0, runHeartBeatSound.Length)],
-                1.6f - heartBeatTerm);
-            term = 0;
+            //SoundManager.instance.PlaySFXVariable1(
+               // runHeartBeatSound[UnityEngine.Random.Range(0, runHeartBeatSound.Length)],
+                //1.6f - heartBeatTerm);
+           // term = 0;
         }
 
         term += Time.deltaTime;

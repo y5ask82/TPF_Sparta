@@ -98,7 +98,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4044724163977573129}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -313,7 +313,7 @@ Transform:
   - {fileID: 8374395077529547270}
   - {fileID: 8967054035632326033}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4819610656053058375
 MonoBehaviour:
@@ -492,7 +492,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.42
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
@@ -545,7 +545,7 @@ MonoBehaviour:
   canLook: 1
   walkParameterName: Walk
   runParameterName: Run
-  flashGrenadeNum: 0
+  flashGrenadeNum: 3
   _flashGrenade: {fileID: 0}
   flashLightSFX: {fileID: 8300000, guid: d8fc7ceae0e775248a0466f73bec4ec1, type: 3}
   layerMask:

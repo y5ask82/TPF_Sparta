@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7201657345660586646}
   - component: {fileID: 4620486695862070217}
   - component: {fileID: 4605917340108822600}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MonsterB
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,4 +121,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 10, y: 1, z: 10}
-  moveSpeed: 2
+  moveSpeed: 3

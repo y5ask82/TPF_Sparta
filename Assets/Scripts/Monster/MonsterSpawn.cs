@@ -15,6 +15,8 @@ public class MonsterSpawn : MonoBehaviour
 
     private int keyamount;
 
+    public Vector3[] spawnPoints;
+
     void Start()
     {
         SpawnMonsterA();
@@ -51,12 +53,12 @@ public class MonsterSpawn : MonoBehaviour
 
     public void SpawnMonsterC()
     {
-        curMonsterC = Instantiate(MonsterC);
-        int x3 = Random.Range(36, 44);
-        int z3 = Random.Range(35, 44);
+        int arrayLength = spawnPoints.Length;
+        int randomIndex = Random.Range(0, arrayLength);
+        Vector3 spawnPosition = spawnPoints[randomIndex];
 
-        curMonsterC.transform.position = new Vector3(x3, 2.0f, z3); //몬스터C의 소환 좌표 설정.
-        curMonsterC.GetComponent<NavMeshAgent>().enabled = false; //처음 생성될 때 NavMeshAgent 비활성화
+        curMonsterC = Instantiate(MonsterC, spawnPosition, Quaternion.identity);
+        curMonsterC.GetComponent<NavMeshAgent>().enabled = false; // 처음 생성될 때 NavMeshAgent 비활성화
     }
 
     public void SecondPhaseSpawn() //첫번째 열쇠를 획득하면 작동.

@@ -394,6 +394,17 @@ MonoBehaviour:
   MonsterA: {fileID: 3050415821093257850, guid: 754d51431f724d64a9dd68686c3596d0, type: 3}
   MonsterB: {fileID: 9105644455472975057, guid: d2d854f084e43cd4aa788d8cd30c395f, type: 3}
   MonsterC: {fileID: 4505967653929161740, guid: 912995664f881d64284a79cc455c7801, type: 3}
+  spawnPoints:
+  - {x: 5, y: 1, z: 5}
+  - {x: 7, y: 1, z: 26}
+  - {x: 9, y: 1, z: 45}
+  - {x: 15.5, y: 1, z: 43}
+  - {x: 34.5, y: 1, z: 41}
+  - {x: 39, y: 1, z: 38.8}
+  - {x: 39, y: 1, z: 30}
+  - {x: 43, y: 1, z: 30}
+  - {x: 36.8, y: 1, z: 15.8}
+  - {x: 28.3, y: 1, z: 7.3}
 --- !u!1 &1587527693
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,7 +850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5073661554486123943, guid: dd9cbf74894facc4589adcede87b833f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5073661554486123943, guid: dd9cbf74894facc4589adcede87b833f, type: 3}
       propertyPath: m_LocalRotation.x
@@ -847,11 +858,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5073661554486123943, guid: dd9cbf74894facc4589adcede87b833f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5073661554486123943, guid: dd9cbf74894facc4589adcede87b833f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5073661554486123943, guid: dd9cbf74894facc4589adcede87b833f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -859,15 +870,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5073661554486123943, guid: dd9cbf74894facc4589adcede87b833f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 270
       objectReference: {fileID: 0}
     - target: {fileID: 5073661554486123943, guid: dd9cbf74894facc4589adcede87b833f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5325767120999744516, guid: dd9cbf74894facc4589adcede87b833f, type: 3}
+      propertyPath: m_Radius
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5522714084375321363, guid: dd9cbf74894facc4589adcede87b833f, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5522714084375321363, guid: dd9cbf74894facc4589adcede87b833f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -891,7 +910,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2090814610}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
