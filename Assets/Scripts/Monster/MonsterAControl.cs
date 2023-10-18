@@ -91,11 +91,6 @@ public class MonsterAControl : MonoBehaviour
             {
                 SetState(AIState.Searching);
             }
-        if (playerDistance < 0.5f)
-        {
-            agent.isStopped = true;
-        }
-        
     }
 
     bool IsPlayerInFieldOfView() //플레이어가 시야에 있는지 확인.
