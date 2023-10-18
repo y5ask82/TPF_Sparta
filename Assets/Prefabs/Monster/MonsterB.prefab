@@ -121,4 +121,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 10, y: 1, z: 10}
-  moveSpeed: 5
+  moveSpeed: 2
