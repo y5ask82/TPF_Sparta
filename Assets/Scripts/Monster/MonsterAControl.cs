@@ -35,6 +35,7 @@ public class MonsterAControl : MonoBehaviour
     //private SkinnedMeshRenderer[] meshRenderers; 메쉬 렌더링
 
     [SerializeField] AudioClip detectPlayerSFX;
+    [SerializeField] AudioClip detectPlayerBGM;
     [SerializeField] LayerMask playerLayer;
     private float detectCoolTime = 30f;
 
@@ -97,22 +98,25 @@ public class MonsterAControl : MonoBehaviour
 
         if(playerDistance < followDistance)
         {
+            SoundManager.instance.StopBGM();
+            SoundManager.instance.PlayBGM(detectPlayerBGM);
             SetState(AIState.Following);
         }
     }
 
     private void FollowUpdate()
     {
-            agent.isStopped = false;
-            NavMeshPath path = new NavMeshPath();
-            if (agent.CalculatePath(PlayerController.instance.transform.position, path))
-            {
-                agent.SetDestination(PlayerController.instance.transform.position);
-            }
-            if (playerDistance > followDistance)
-            {
-                SetState(AIState.Searching);
-            }
+        agent.isStopped = false;
+        NavMeshPath path = new NavMeshPath();
+        if (agent.CalculatePath(PlayerController.instance.transform.position, path))
+        {
+            agent.SetDestination(PlayerController.instance.transform.position);
+        }
+        if (playerDistance > followDistance)
+        {
+            SoundManager.instance.StopBGM();
+            SetState(AIState.Searching);
+        }
     }
 
     bool IsPlayerInFieldOfView() //플레이어가 시야에 있는지 확인.
