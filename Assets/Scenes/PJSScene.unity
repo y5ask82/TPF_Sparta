@@ -2378,7 +2378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &752031499
 Light:
   m_ObjectHideFlags: 0
@@ -4301,6 +4301,22 @@ PrefabInstance:
     - target: {fileID: 6149941120998527879, guid: fe436e6432ac76246a3b07996877a6b6, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076375529855071615, guid: fe436e6432ac76246a3b07996877a6b6, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 7.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076375529855071615, guid: fe436e6432ac76246a3b07996877a6b6, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076375529855071615, guid: fe436e6432ac76246a3b07996877a6b6, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076375529855071615, guid: fe436e6432ac76246a3b07996877a6b6, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.02e-43
       objectReference: {fileID: 0}
     - target: {fileID: 8289510005007961889, guid: fe436e6432ac76246a3b07996877a6b6, type: 3}
       propertyPath: m_RootOrder
