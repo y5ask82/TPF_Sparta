@@ -98,7 +98,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4044724163977573129}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0.08, y: 0.1, z: -0.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -313,7 +313,7 @@ Transform:
   - {fileID: 8374395077529547270}
   - {fileID: 8967054035632326033}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4819610656053058375
 MonoBehaviour:
@@ -541,16 +541,13 @@ MonoBehaviour:
   minXLook: -85
   maxXLook: 85
   lookSensitivity: 0.2
-  flashLight: {fileID: 0}
+  flashLight: {fileID: 5629695918658577510}
   canLook: 1
   walkParameterName: Walk
   runParameterName: Run
   flashGrenadeNum: 3
   _flashGrenade: {fileID: 0}
   flashLightSFX: {fileID: 8300000, guid: d8fc7ceae0e775248a0466f73bec4ec1, type: 3}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
   _camera: {fileID: 7426393583640427476}
   targetMonsterC: {fileID: 0}
 --- !u!114 &9007132219681359116
