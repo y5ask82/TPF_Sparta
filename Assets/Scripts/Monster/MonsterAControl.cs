@@ -35,6 +35,7 @@ public class MonsterAControl : MonoBehaviour
     //private SkinnedMeshRenderer[] meshRenderers; ¸Þ½¬ ·»´õ¸µ
 
     [SerializeField] AudioClip detectPlayerSFX;
+    [SerializeField] AudioClip detectPlayerBGM;
     [SerializeField] LayerMask playerLayer;
     private float detectCoolTime = 30f;
 
@@ -97,6 +98,7 @@ public class MonsterAControl : MonoBehaviour
 
         if(playerDistance < followDistance)
         {
+            SoundManager.instance.PlayBGM(detectPlayerBGM);
             SetState(AIState.Following);
         }
     }
