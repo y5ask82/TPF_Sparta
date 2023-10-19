@@ -37,7 +37,9 @@ public class MonsterAControl : MonoBehaviour
     [SerializeField] AudioClip detectPlayerSFX;
     [SerializeField] AudioClip detectPlayerBGM;
     [SerializeField] LayerMask playerLayer;
-    private float detectCoolTime = 30f;
+    private float detectCoolTime = 15f;
+    RaycastHit hit;
+    SoundManager _soundManager;
 
 
     private void Awake()
@@ -45,6 +47,7 @@ public class MonsterAControl : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
         //meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>(); ¸Þ½¬·»´õ¸µ
+        _soundManager = SoundManager.instance;
     }
 
     private void Start()
@@ -66,21 +69,22 @@ public class MonsterAControl : MonoBehaviour
             case AIState.Following: FollowUpdate(); break;
         }
 
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position - new Vector3(0,0.5f,0), transform.forward, out hit, 15f))
+        if (Physics.Raycast(transform.position - new Vector3(0,0,0), transform.forward, out hit, 15f))
         {
             
-            if (detectCoolTime == 30f && hit.transform.tag == "Player")
+            if (detectCoolTime == 15f && hit.transform.tag == "Player")
             {
-                SoundManager.instance.PlaySFXVariable3(detectPlayerSFX, 0.4f);
+
+                _soundManager.PlayBGM(detectPlayerBGM);
+                _soundManager.PlaySFXVariable3(detectPlayerSFX, 0.4f);
                 detectCoolTime -= Time.deltaTime;
             }
 
             Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
         }
         if (detectCoolTime <= 0)
-            detectCoolTime = 30f;
-        else if (detectCoolTime != 30f)
+            detectCoolTime = 15f;
+        else if (detectCoolTime != 15f)
             detectCoolTime -= Time.deltaTime;
     }
 
@@ -98,8 +102,6 @@ public class MonsterAControl : MonoBehaviour
 
         if(playerDistance < followDistance)
         {
-            SoundManager.instance.StopBGM();
-            SoundManager.instance.PlayBGM(detectPlayerBGM);
             SetState(AIState.Following);
         }
     }
@@ -114,7 +116,7 @@ public class MonsterAControl : MonoBehaviour
         }
         if (playerDistance > followDistance)
         {
-            SoundManager.instance.StopBGM();
+            _soundManager.StopBGM();
             SetState(AIState.Searching);
         }
     }
