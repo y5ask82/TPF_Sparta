@@ -100,7 +100,19 @@ public class SoundManager : MonoBehaviour
     public void StopBGM()
     {
         //bgmSounds.Stop();
-        bgmSounds.volume = 0;
+       // bgmSounds.volume = 0;
+       StartCoroutine(SlowStopBGM());
+
+    }
+
+    IEnumerator SlowStopBGM()
+    {
+        if (Time.deltaTime / 2 > bgmSounds.volume) bgmSounds.volume = 0;
+        else bgmSounds.volume -= Time.deltaTime / 2;
+        
+
+        if(bgmSounds.volume == 0 ) yield break;
+        yield return null;
     }
 
     public void PlaySFX(AudioClip clip)
