@@ -635,7 +635,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 294509147}
-  - {fileID: 1598253215}
   - {fileID: 1933971061}
   m_Father: {fileID: 0}
   m_RootOrder: 11
@@ -2459,16 +2458,16 @@ MonoBehaviour:
   MonsterB: {fileID: 109708, guid: dedd5323583480943b35a173d5b12766, type: 3}
   MonsterC: {fileID: 4046910193758613445, guid: a18f9b2591d78e24cbc866ebec317cf5, type: 3}
   spawnPoints:
-  - {x: 5, y: 1, z: 5}
-  - {x: 7, y: 1, z: 26}
-  - {x: 9, y: 1, z: 45}
-  - {x: 15.5, y: 1, z: 43}
-  - {x: 34.5, y: 1, z: 41}
-  - {x: 39, y: 1, z: 38.8}
-  - {x: 39, y: 1, z: 30}
-  - {x: 43, y: 1, z: 30}
-  - {x: 36.8, y: 1, z: 15.8}
-  - {x: 28.3, y: 1, z: 7.3}
+  - {x: 5, y: 2, z: 5}
+  - {x: 7, y: 2, z: 26}
+  - {x: 9, y: 2, z: 45}
+  - {x: 15.5, y: 2, z: 43}
+  - {x: 34.5, y: 2, z: 41}
+  - {x: 43, y: 2, z: 9}
+  - {x: 39, y: 2, z: 30}
+  - {x: 43, y: 2, z: 30}
+  - {x: 36.8, y: 2, z: 15.8}
+  - {x: 28.3, y: 2, z: 7.3}
 --- !u!4 &768227464
 Transform:
   m_ObjectHideFlags: 0
@@ -5388,11 +5387,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 695e9c39c231cfa41a135e68073a9772, type: 3}
---- !u!4 &1598253215 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3705028537381535112, guid: 78df1db2fbc8ec64f949fac0c05bf693, type: 3}
-  m_PrefabInstance: {fileID: 1759743274}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1620837183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5863,6 +5857,7 @@ Light:
   m_CorrespondingSourceObject: {fileID: 4764803282453492319, guid: 265ab864f96a547e396cad17d327fe2c, type: 3}
   m_PrefabInstance: {fileID: 1753782559}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1001 &1759743274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5928,6 +5923,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78df1db2fbc8ec64f949fac0c05bf693, type: 3}
+=======
+>>>>>>> main
 --- !u!1001 &1768604637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6451,6 +6448,10 @@ PrefabInstance:
     - target: {fileID: 975337723070312923, guid: dd9cbf74894facc4589adcede87b833f, type: 3}
       propertyPath: walls.Array.data[3]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311320572949893342, guid: dd9cbf74894facc4589adcede87b833f, type: 3}
+      propertyPath: runSpeed
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2311320572949893342, guid: dd9cbf74894facc4589adcede87b833f, type: 3}
       propertyPath: flashLight
