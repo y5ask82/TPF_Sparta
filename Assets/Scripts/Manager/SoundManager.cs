@@ -12,6 +12,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource sfxSoundsVariable3;
     [SerializeField] private AudioSource sfxSoundsVariable4;
 
+
+    [SerializeField] AudioClip detectPlayerBGM;
+
     private float bgmVolume;
     private float sfxVolume;
 
@@ -22,6 +25,10 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
+        bgmSounds.clip = detectPlayerBGM;
+        bgmSounds.volume = 0;
+        bgmSounds.Play();
+
         if (instance == null)
         {
             instance = this;
@@ -84,17 +91,16 @@ public class SoundManager : MonoBehaviour
         bgmSoundsBase.Stop();
     }
 
-    public void PlayBGM(AudioClip clip)
+    public void PlayBGM()
     {
-        bgmSounds.Stop();
-        bgmSounds.clip = clip;
         bgmSounds.volume = bgmVolume;
-        bgmSounds.Play();
+        //bgmSounds.Play();
     }
 
     public void StopBGM()
     {
-        bgmSounds.Stop();
+        //bgmSounds.Stop();
+        bgmSounds.volume = 0;
     }
 
     public void PlaySFX(AudioClip clip)

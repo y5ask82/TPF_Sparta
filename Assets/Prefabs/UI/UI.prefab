@@ -2370,7 +2370,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8289510005007961889}
   - component: {fileID: 8383676331644484875}
-  - component: {fileID: 3089952998779483669}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -2422,14 +2421,6 @@ MonoBehaviour:
   DeathSound1: {fileID: 8300000, guid: 9091d467b3b834b43af1e66c58f07e2f, type: 3}
   DeathSound2: {fileID: 8300000, guid: a93e160a79c705b4381ea9c73edfdac1, type: 3}
   IsDead: 0
---- !u!81 &3089952998779483669
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4101029912006928783}
-  m_Enabled: 1
 --- !u!1 &4343539440040725582
 GameObject:
   m_ObjectHideFlags: 0
