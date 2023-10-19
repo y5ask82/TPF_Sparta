@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -21,9 +20,16 @@ public class MonsterAControl : MonoBehaviour
     [Header("Stats")]
     public float searchSpeed; //Searching 중의 이동 속도
     public float followSpeed; //발견하고 Following중의 이동 속도
+    public float wanderSpeed;
 
     [Header("AI")]
     private AIState aiState;
+
+    [Header("Wandering")]
+    public float minWanderDistance;
+    public float maxWanderDistance;
+    public float minWanderWaitTime;
+    public float maxWanderWaitTime;
 
     private float playerDistance; //플레이어와 몬스터간의 거리
     public float searchDistance; //몬스터가 서치 모드이기 위한 거리
@@ -62,31 +68,12 @@ public class MonsterAControl : MonoBehaviour
     {
         playerDistance = Vector3.Distance(transform.position, PlayerController.instance.transform.position); //플레이어 위치 좌표화
 
-        //animator.SetBool("Moving", aiState != AIState.Idle); 애니메이션 기능
-
         switch (aiState) //각 AI  스테이트일때 해당 업데이트 기능 활성화
         {
             case AIState.Searching: SearchUpdate(); break;
+            case AIState.Wandering: WanderUpdate(); break;
             case AIState.Following: FollowUpdate(); break;
         }
-
-        if (Physics.Raycast(transform.position - new Vector3(0,0,0), transform.forward, out hit, 15f))
-        {
-            
-            if (detectCoolTime == 15f && hit.transform.tag == "Player")
-            {
-
-                _soundManager.PlayBGM();
-                _soundManager.PlaySFXVariable3(detectPlayerSFX, 0.4f);
-                detectCoolTime -= Time.deltaTime;
-            }
-
-            Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
-        }
-        if (detectCoolTime <= 0)
-            detectCoolTime = 15f;
-        else if (detectCoolTime != 15f)
-            detectCoolTime -= Time.deltaTime;
     }
 
     private void SearchUpdate()
@@ -100,16 +87,14 @@ public class MonsterAControl : MonoBehaviour
                 agent.SetDestination(PlayerController.instance.transform.position);
             }
         }
-
         if(playerDistance < followDistance)
         {
-            SetState(AIState.Following);
+            SetState(AIState.Wandering);
         }
     }
 
     private void FollowUpdate()
     {
-
         agent.isStopped = false;
         NavMeshPath path = new NavMeshPath();
         agent.CalculatePath(PlayerController.instance.transform.position, path);
@@ -118,6 +103,23 @@ public class MonsterAControl : MonoBehaviour
         {
             _soundManager.StopBGM();
             SetState(AIState.Searching);
+        }
+    }
+
+    private void WanderUpdate()
+    {
+        if (IsPlayerInFieldOfView())
+        {
+            
+            SetState(AIState.Following);
+        }
+        if(playerDistance > followDistance + 5.0f)
+        {
+            SetState(AIState.Searching);
+        }
+        else
+        {
+            Invoke("WanderToNewLocation", Random.Range(minWanderWaitTime, maxWanderWaitTime));
         }
     }
 
@@ -138,12 +140,41 @@ public class MonsterAControl : MonoBehaviour
                     agent.speed = searchSpeed;
                 }
                 break;
+            case AIState.Wandering:
+                {
+                    agent.speed = wanderSpeed;
+                }
+                break;
             case AIState.Following:
                 {
                     agent.speed = followSpeed;
                 }
                 break;
         }
+    }
+
+    void WanderToNewLocation()
+    {
+        agent.SetDestination(GetWanderLocation());
+    }
+
+
+    Vector3 GetWanderLocation()
+    {
+        NavMeshHit hit;
+
+        NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance)), out hit, maxWanderDistance, NavMesh.AllAreas);
+
+        int i = 0;
+        while (Vector3.Distance(transform.position, hit.position) < followDistance)
+        {
+            NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance)), out hit, maxWanderDistance, NavMesh.AllAreas);
+            i++;
+            if (i == 30)
+                break;
+        }
+
+        return hit.position;
     }
 
     private void OnCollisionEnter(Collision collision)
