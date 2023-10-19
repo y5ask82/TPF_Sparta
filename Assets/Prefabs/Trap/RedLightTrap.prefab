@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1863944047911194452}
   - component: {fileID: 9082931061285287695}
   - component: {fileID: 1182948168238974058}
+  - component: {fileID: 152770855415876357}
   m_Layer: 0
   m_Name: RedLightTrap
   m_TagString: Untagged
@@ -122,7 +123,10 @@ MonoBehaviour:
   audioSource: {fileID: 1182948168238974058}
   audioClip: {fileID: 8300000, guid: a45a391689ce7446483a7a9a8d949d2f, type: 3}
   clip:
+  - {fileID: 8300000, guid: 8235bdc33ccff438c8b31d73912679e1, type: 3}
   - {fileID: 8300000, guid: a45a391689ce7446483a7a9a8d949d2f, type: 3}
+  - {fileID: 8300000, guid: 25d04b13e8041486c8f0291592a66d62, type: 3}
+  - {fileID: 8300000, guid: 467a951e10cda4066a6821b44aedc764, type: 3}
   PointLight: {fileID: 0}
   Point: {fileID: 0}
 --- !u!82 &1182948168238974058
@@ -221,3 +225,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &152770855415876357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8997342536971026590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 283c85fecc3e8483b97af9fc29203034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashLight: {fileID: 0}
