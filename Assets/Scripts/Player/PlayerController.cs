@@ -269,6 +269,14 @@ public class PlayerController : MonoBehaviour
             _flashGrenade.Flash();
         }
     }
-    
+
+    internal void AddFlashGrenade()
+    {
+        if(flashGrenadeNum < 3)
+        {
+            flashGrenadeNum++;
+            PlayerUI.instance.UpdateFlashGrenadeUI();
+        }
+    }
 }
 

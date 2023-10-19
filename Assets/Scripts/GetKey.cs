@@ -55,6 +55,7 @@ public class GetKey : MonoBehaviour
 
                 PlayerUI.instance.PlayerGetKey(hasKeys);
                 SoundManager.instance.PlaySFXVariable4(getKeySFX, 0.3f);
+                PlayerController.instance.AddFlashGrenade();
 
                 Destroy(nearObject);
                 MonsterSpawn monsterSpawn = FindObjectOfType<MonsterSpawn>();

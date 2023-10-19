@@ -95,6 +95,22 @@ public class MonsterAControl : MonoBehaviour
 
     private void FollowUpdate()
     {
+        if (detectCoolTime == 15f)
+        {
+            _soundManager.PlayBGM();
+            _soundManager.PlaySFXVariable3(detectPlayerSFX, 0.3f);
+            detectCoolTime -= Time.deltaTime;
+        }
+        else if(detectCoolTime < Time.deltaTime)
+        {
+            detectCoolTime = 15f;
+        }
+        else
+        {
+            detectCoolTime -= Time.deltaTime;
+        }
+        
+
         agent.isStopped = false;
         NavMeshPath path = new NavMeshPath();
         agent.CalculatePath(PlayerController.instance.transform.position, path);
@@ -110,7 +126,6 @@ public class MonsterAControl : MonoBehaviour
     {
         if (IsPlayerInFieldOfView())
         {
-            
             SetState(AIState.Following);
         }
         if(playerDistance > followDistance + 5.0f)
