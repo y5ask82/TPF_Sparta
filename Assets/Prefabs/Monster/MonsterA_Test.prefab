@@ -53,10 +53,11 @@ MonoBehaviour:
   searchDistance: 10000
   followDistance: 10
   fieldOfView: 120
-  detectPlayerSFX: {fileID: 0}
+  detectPlayerSFX: {fileID: 8300000, guid: 9c6973fe4d363054c97d0e262988f707, type: 3}
+  detectPlayerBGM: {fileID: 8300000, guid: 9c31231a87c0e0f42b9274ef4a48d31b, type: 3}
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!195 &2494531547203065918
 NavMeshAgent:
   m_ObjectHideFlags: 0
