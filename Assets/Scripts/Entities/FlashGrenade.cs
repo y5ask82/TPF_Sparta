@@ -27,7 +27,7 @@ public class FlashGrenade : MonoBehaviour
 
     IEnumerator RespawnMonster(GameObject go)
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(40f);
         go.SetActive(true);
 
         yield break;

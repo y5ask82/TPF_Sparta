@@ -537,7 +537,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  runSpeed: 7
+  moveMaxSpeed: 2
+  runSpeed: 5
+  runMaxSpeed: 5
   cameraContainer: {fileID: 8374395077529547270}
   minXLook: -85
   maxXLook: 85
@@ -611,6 +613,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cbb5df0b8d444cdaaa56f28d87d85e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Rock: {fileID: 0}
+  Exit: {fileID: 0}
   Timer: {fileID: 0}
   keys: []
   walls:
@@ -620,6 +624,7 @@ MonoBehaviour:
   - {fileID: 0}
   hasKeys: 00000000
   keysToCollect: 4
+  collectedKeys: 0
   getKeySFX: {fileID: 8300000, guid: ff228a89dbb74a640be5efe3fa8f9990, type: 3}
   MonsterA: {fileID: 0}
   MonsterB: {fileID: 0}

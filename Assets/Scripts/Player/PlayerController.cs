@@ -12,7 +12,9 @@ public class PlayerController : MonoBehaviour
     bool canControllFlash=true;
     [Header("Movement")]
     public float moveSpeed;
+    public float moveMaxSpeed;
     public float runSpeed;
+    public float runMaxSpeed;
     private Vector2 curMovementInput;
 
     [Header("Look")]
@@ -74,7 +76,8 @@ public class PlayerController : MonoBehaviour
         else Run();
 
         _animator.SetFloat("Blend", 1 - _playerConditions.stamina.GetPercentage());
-        //moveSpeed *= (1 - _playerConditions.stamina.GetPercentage());
+        moveSpeed = moveMaxSpeed * (1-(1.01f-_playerConditions.stamina.GetPercentage())/2);
+        runSpeed = runMaxSpeed * (1-(1.01f-_playerConditions.stamina.GetPercentage())/2);
     }
 
     private void Update()
