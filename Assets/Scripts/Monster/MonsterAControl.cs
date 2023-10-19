@@ -13,6 +13,7 @@ public enum AIState
 {
    Searching,
    Following,
+   Wandering
 }
 
 public class MonsterAControl : MonoBehaviour
@@ -28,6 +29,7 @@ public class MonsterAControl : MonoBehaviour
     public float searchDistance; //몬스터가 서치 모드이기 위한 거리
     public float followDistance; //몬스터가 팔로우 모드이기 위한 거리
 
+    
 
     public float fieldOfView = 120f; //시야각
     private NavMeshAgent agent;
