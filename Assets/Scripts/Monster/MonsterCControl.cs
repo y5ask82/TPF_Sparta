@@ -57,7 +57,7 @@ public class MonsterCControl : MonoBehaviour
 
         if(agent.isStopped == true) //
         {
-            gameObject.tag = "Monster";
+            gameObject.tag = "Enemy";
         }
     }
 
