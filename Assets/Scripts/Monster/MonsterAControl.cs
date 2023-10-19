@@ -107,6 +107,7 @@ public class MonsterAControl : MonoBehaviour
 
     private void FollowUpdate()
     {
+
         agent.isStopped = false;
         NavMeshPath path = new NavMeshPath();
         agent.CalculatePath(PlayerController.instance.transform.position, path);

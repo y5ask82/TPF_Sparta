@@ -19,6 +19,6 @@ public class Restartbtn : MonoBehaviour
 
     public void GameStart()
     {
-        SceneManager.LoadScene("KKHScene");
+        SceneManager.LoadScene("PJSScene");
     }
 }
