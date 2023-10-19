@@ -49,11 +49,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   searchSpeed: 5
-  followSpeed: 1
+  followSpeed: 1.5
+  wanderSpeed: 1
+  minWanderDistance: 1
+  maxWanderDistance: 5
+  minWanderWaitTime: 1
+  maxWanderWaitTime: 3
   searchDistance: 10000
   followDistance: 10
   fieldOfView: 120
   detectPlayerSFX: {fileID: 0}
+  detectPlayerBGM: {fileID: 0}
   playerLayer:
     serializedVersion: 2
     m_Bits: 0
