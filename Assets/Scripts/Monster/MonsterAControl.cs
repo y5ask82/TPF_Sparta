@@ -66,10 +66,10 @@ public class MonsterAControl : MonoBehaviour
         }
 
         RaycastHit hit;
-        if(Physics.Raycast(transform.position - new Vector3(0,0.5f,0), transform.forward, out hit, 15f, playerLayer))
+        if (Physics.Raycast(transform.position - new Vector3(0,0.5f,0), transform.forward, out hit, 15f))
         {
             
-            if (detectCoolTime == 30f)
+            if (detectCoolTime == 30f && hit.transform.tag == "Player")
             {
                 SoundManager.instance.PlaySFXVariable3(detectPlayerSFX, 0.4f);
                 detectCoolTime -= Time.deltaTime;
