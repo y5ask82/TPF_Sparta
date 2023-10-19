@@ -74,7 +74,7 @@ public class MonsterAControl : MonoBehaviour
             if (detectCoolTime == 15f && hit.transform.tag == "Player")
             {
 
-                _soundManager.PlayBGM(detectPlayerBGM);
+                _soundManager.PlayBGM();
                 _soundManager.PlaySFXVariable3(detectPlayerSFX, 0.4f);
                 detectCoolTime -= Time.deltaTime;
             }
@@ -152,5 +152,10 @@ public class MonsterAControl : MonoBehaviour
             Marking.I.SaveMarkingData(test, Quaternion.identity);
             UIManager.Instance.UICoroutine("FadeIn");
         }
+    }
+
+    private void OnDisable()
+    {
+        _soundManager.StopBGM();
     }
 }

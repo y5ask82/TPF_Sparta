@@ -58,6 +58,7 @@ MonoBehaviour:
   sfxSoundsVariable2: {fileID: 3040190253326990898}
   sfxSoundsVariable3: {fileID: 7383688023427966246}
   sfxSoundsVariable4: {fileID: 2563080504558804872}
+  detectPlayerBGM: {fileID: 8300000, guid: 9c31231a87c0e0f42b9274ef4a48d31b, type: 3}
 --- !u!82 &7407668000810221079
 AudioSource:
   m_ObjectHideFlags: 0
