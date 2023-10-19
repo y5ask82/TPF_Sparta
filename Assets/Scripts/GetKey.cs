@@ -5,6 +5,8 @@ using UnityEngine;
 public class GetKey : MonoBehaviour
 {
     GameObject nearObject;
+    [SerializeField] GameObject Rock;
+    [SerializeField] GameObject Exit;
     [SerializeField] GameObject Timer;
     bool iDown;
     public GameObject[] keys;
@@ -80,7 +82,8 @@ public class GetKey : MonoBehaviour
                 if (collectedKeys == keysToCollect) //획득하고 난 후 수집한 키가 3개면 마지막 스테이지 시작
                 {
                     Timer.SetActive(true);
-                    
+                    Rock.gameObject.SetActive(false);
+                    Exit.gameObject.SetActive(true);
                     if (monsterSpawn != null)
                     {
                         monsterSpawn.LastPhaseSpawn();

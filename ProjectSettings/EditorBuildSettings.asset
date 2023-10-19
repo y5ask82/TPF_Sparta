@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/KKHScene.unity
     guid: 2f14bd53ffe844c48b3c95fa6b32c6e1
+  - enabled: 1
+    path: Assets/Scenes/PJSScene.unity
+    guid: ca75d57b2400447dc85c6234921da954
+  - enabled: 1
+    path: Assets/Scenes/Outro.unity
+    guid: 15461a27cc1f48441ae6cb4d3b5120a4
   m_configObjects: {}
