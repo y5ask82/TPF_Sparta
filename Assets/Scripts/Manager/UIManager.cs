@@ -171,7 +171,8 @@ public class UIManager : MonoBehaviour
             yield return 0;
             curTime += Time.deltaTime;
         }
-        SceneManager.LoadScene("PJSScene");
+        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene("Restart");
         StartCoroutine(FadeOut());
 
     }
