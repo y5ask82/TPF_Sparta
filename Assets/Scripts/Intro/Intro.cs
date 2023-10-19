@@ -13,6 +13,6 @@ public class Intro : MonoBehaviour
     }
     public void SceneLoadEvent()
     {
-        SceneManager.LoadScene("KKHScene");
+        SceneManager.LoadScene("PJSScene");
     }
 }
