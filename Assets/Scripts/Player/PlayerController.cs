@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
             if (viewPos.x >= -0.2f && viewPos.x <= 1.2f &&
                 viewPos.y >= -0.2f && viewPos.y <= 1.2f &&
-                viewPos.z > 0 && viewPos.z <= 20)
+                viewPos.z > 0 && viewPos.z <= 20 && flashLight.enabled)
             {
                 targetMonsterC.agent.isStopped = true;
             }
