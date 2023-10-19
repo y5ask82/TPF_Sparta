@@ -88,7 +88,6 @@ public class MonsterSpawn : MonoBehaviour
 
         //마지막 페이즈에서 몬스터 ABC 모두 출현, C도 A와 비슷하게 움직이도록
         MonsterCControl monsterController = FindObjectOfType<MonsterCControl>();
-        monsterController.gameObject.tag = "Enemy";
         if (monsterController != null)
         {
             monsterController.searchSpeed = 5.0f;

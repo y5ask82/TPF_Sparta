@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0, z: 0}
   material: {fileID: 2100000, guid: f93f76d03bfcaab4ca974be3ca83c5cb, type: 2}
-  moveSpeed: 1
+  moveSpeed: 3
 --- !u!23 &4612050329562474961
 MeshRenderer:
   m_ObjectHideFlags: 0
