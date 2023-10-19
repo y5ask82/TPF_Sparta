@@ -107,12 +107,17 @@ public class SoundManager : MonoBehaviour
 
     IEnumerator SlowStopBGM()
     {
-        if (Time.deltaTime / 2 > bgmSounds.volume) bgmSounds.volume = 0;
-        else bgmSounds.volume -= Time.deltaTime / 2;
+        while (bgmSounds.volume != 0)
+        {
+            if (Time.deltaTime / 2 > bgmSounds.volume) bgmSounds.volume = 0;
+            else bgmSounds.volume -= Time.deltaTime / 2;
+
+            Debug.Log(bgmSounds.volume);
+            yield return null;
+        }
         
 
-        if(bgmSounds.volume == 0 ) yield break;
-        yield return null;
+        yield break;
     }
 
     public void PlaySFX(AudioClip clip)
