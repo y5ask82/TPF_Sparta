@@ -148,3 +148,7 @@ MonoBehaviour:
   searchDistance: 100000
   followDistance: 10
   fieldOfView: 120
+  detectPlayerSFX: {fileID: 8300000, guid: 9c6973fe4d363054c97d0e262988f707, type: 3}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64

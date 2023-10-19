@@ -15,6 +15,14 @@ public class GetKey : MonoBehaviour
     public int collectedKeys = 0;
     private TimerUI timerUI;
 
+    [SerializeField] AudioClip getKeySFX;
+
+    private MonsterSpawn monsterSpawnscript;
+    public GameObject MonsterA;
+    public GameObject MonsterB;
+    public GameObject MonsterC;
+
+
     void Start()
     {
         timerUI = FindObjectOfType<TimerUI>();
@@ -43,7 +51,8 @@ public class GetKey : MonoBehaviour
                 hasKeys[keyIndex] = true;
                 collectedKeys++;
 
-                PlayerUI.instance.PlayerGetKey(hasKeys);//???
+                PlayerUI.instance.PlayerGetKey(hasKeys);
+                SoundManager.instance.PlaySFXVariable4(getKeySFX, 0.3f);
 
                 Destroy(nearObject);
                 MonsterSpawn monsterSpawn = FindObjectOfType<MonsterSpawn>();

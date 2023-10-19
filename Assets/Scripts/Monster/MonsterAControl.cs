@@ -34,6 +34,11 @@ public class MonsterAControl : MonoBehaviour
     private Animator animator;
     //private SkinnedMeshRenderer[] meshRenderers; ¸Þ½¬ ·»´õ¸µ
 
+    [SerializeField] AudioClip detectPlayerSFX;
+    [SerializeField] LayerMask playerLayer;
+    private float detectCoolTime = 30f;
+
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -59,6 +64,23 @@ public class MonsterAControl : MonoBehaviour
             case AIState.Searching: SearchUpdate(); break;
             case AIState.Following: FollowUpdate(); break;
         }
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position - new Vector3(0,0.5f,0), transform.forward, out hit, 15f))
+        {
+            
+            if (detectCoolTime == 30f && hit.transform.tag == "Player")
+            {
+                SoundManager.instance.PlaySFXVariable3(detectPlayerSFX, 0.4f);
+                detectCoolTime -= Time.deltaTime;
+            }
+
+            Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
+        }
+        if (detectCoolTime <= 0)
+            detectCoolTime = 30f;
+        else if (detectCoolTime != 30f)
+            detectCoolTime -= Time.deltaTime;
     }
 
     private void SearchUpdate()
