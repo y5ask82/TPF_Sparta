@@ -61,7 +61,7 @@ public class GetKey : MonoBehaviour
                 {
                     Destroy(walls[keyIndex]);
                 }
-                if(collectedKeys == 1) //획득하고 난 후 수집한 키가 1개면 2번째 스테이지 시작
+                if(collectedKeys == 1) //키를 획득하고 난 후 수집한 키가 1개면 2번째 스테이지 시작
                 {
                     
                     if (monsterSpawn != null)

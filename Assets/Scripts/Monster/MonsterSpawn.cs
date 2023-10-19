@@ -103,8 +103,5 @@ public class MonsterSpawn : MonoBehaviour
     {
         Destroy(curMonsterB);
     }
-    public void KillC()
-    {
-        Destroy(curMonsterC);
-    }
+
 }
