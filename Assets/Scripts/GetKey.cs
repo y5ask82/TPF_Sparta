@@ -12,14 +12,8 @@ public class GetKey : MonoBehaviour
     public bool[] hasKeys;
 
     public int keysToCollect = 3; // 총 획득해야 할 열쇠의 개수
-    private int collectedKeys = 0;
+    public int collectedKeys = 0;
     private TimerUI timerUI;
-
-    private MonsterSpawn monsterSpawnscript;
-    public GameObject MonsterA;
-    public GameObject MonsterB;
-    public GameObject MonsterC;
-
 
     void Start()
     {
@@ -52,38 +46,36 @@ public class GetKey : MonoBehaviour
                 PlayerUI.instance.PlayerGetKey(hasKeys);//???
 
                 Destroy(nearObject);
+                MonsterSpawn monsterSpawn = FindObjectOfType<MonsterSpawn>();
 
                 if (keyIndex < walls.Length && hasKeys[keyIndex])
                 {
                     Destroy(walls[keyIndex]);
                 }
-                if(collectedKeys == 1)
+                if(collectedKeys == 1) //획득하고 난 후 수집한 키가 1개면 2번째 스테이지 시작
                 {
-                    MonsterSpawn monsterSpawn = FindObjectOfType<MonsterSpawn>();
+                    
                     if (monsterSpawn != null)
                     {
                         monsterSpawn.SecondPhaseSpawn();
                     }
                 }
-                if(collectedKeys == 2)
+                if(collectedKeys == 2) //획득하고 난 후 수집한 키가 2개면 3번째 스테이지 시작
                 {
-                    MonsterSpawn monsterSpawn = FindObjectOfType<MonsterSpawn>();
+                    
                     if (monsterSpawn != null)
                     {
                         monsterSpawn.ThirdPhaseSpawn();
-                        Debug.Log("세번째 스테이지 시작");
                     }
                 }
-                if (collectedKeys == keysToCollect)
+                if (collectedKeys == keysToCollect) //획득하고 난 후 수집한 키가 3개면 마지막 스테이지 시작
                 {
                     Timer.SetActive(true);
-                    MonsterSpawn monsterSpawn = FindObjectOfType<MonsterSpawn>();
+                    
                     if (monsterSpawn != null)
                     {
                         monsterSpawn.LastPhaseSpawn();
-                        Debug.Log("마지막 스테이지 시작");
                     }
-                    //마지막 라운드 안전지대 제거하는거 추가
                 }
             }
         }

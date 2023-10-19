@@ -13,8 +13,6 @@ public class MonsterSpawn : MonoBehaviour
     public GameObject MonsterC;
     private GameObject curMonsterC;
 
-    private int keyamount;
-
     public Vector3[] spawnPoints;
 
     void Start()
@@ -24,6 +22,7 @@ public class MonsterSpawn : MonoBehaviour
 
     public void SpawnMonsterA()
     {
+        Destroy(curMonsterA);
         curMonsterA = Instantiate(MonsterA);
         int x1 = Random.Range(11, 23);
         int z1 = Random.Range(40, 44);
@@ -34,6 +33,7 @@ public class MonsterSpawn : MonoBehaviour
 
     public void SpawnMonsterB()
     {
+        Destroy(curMonsterB);
         curMonsterB = Instantiate(MonsterB);
         int x2 = Random.Range(5, 13);
         int z2 = Random.Range(5, 11);
@@ -85,6 +85,7 @@ public class MonsterSpawn : MonoBehaviour
         SpawnMonsterA();
         SpawnMonsterB();
         SpawnMonsterC();
+
         //마지막 페이즈에서 몬스터 ABC 모두 출현, C도 A와 비슷하게 움직이도록
         MonsterCControl monsterController = FindObjectOfType<MonsterCControl>();
         if (monsterController != null)
@@ -94,16 +95,16 @@ public class MonsterSpawn : MonoBehaviour
         }
     }
 
-    public void SafeHouseMonsterStop(Collider objec) //안전지대 들어가는 시스템 추가.
+    public void KillA()
     {
-        if(keyamount < 3) //보유한 열쇠 개수가 3보다 적을 때.
-        {
-            if (objec.CompareTag("Player")) //플레이어가 안전지대에 들어가면 몬스터 비활성화.
-            {
-                curMonsterA.GetComponent<MonsterAControl>().enabled = false;
-                curMonsterB.GetComponent<MonsterAControl>().enabled = false;
-                curMonsterC.GetComponent<MonsterAControl>().enabled = false;
-            }
-        }
+        Destroy(curMonsterA);
+    }
+    public void KillB()
+    {
+        Destroy(curMonsterB);
+    }
+    public void KillC()
+    {
+        Destroy(curMonsterC);
     }
 }
