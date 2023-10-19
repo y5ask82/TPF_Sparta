@@ -19,6 +19,7 @@ public class GetKey : MonoBehaviour
 
     [SerializeField] AudioClip getKeySFX;
 
+    private MonsterSpawn monsterSpawnscript;
     public GameObject MonsterA;
     public GameObject MonsterB;
     public GameObject MonsterC;

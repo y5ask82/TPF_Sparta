@@ -35,11 +35,8 @@ public class MonsterAControl : MonoBehaviour
     //private SkinnedMeshRenderer[] meshRenderers; 메쉬 렌더링
 
     [SerializeField] AudioClip detectPlayerSFX;
-    [SerializeField] AudioClip detectPlayerBGM;
     [SerializeField] LayerMask playerLayer;
-    private float detectCoolTime = 15f;
-    RaycastHit hit;
-    SoundManager _soundManager;
+    private float detectCoolTime = 30f;
 
 
     private void Awake()
@@ -47,7 +44,6 @@ public class MonsterAControl : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
         //meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>(); 메쉬렌더링
-        _soundManager = SoundManager.instance;
     }
 
     private void Start()
@@ -69,22 +65,21 @@ public class MonsterAControl : MonoBehaviour
             case AIState.Following: FollowUpdate(); break;
         }
 
-        if (Physics.Raycast(transform.position - new Vector3(0,0,0), transform.forward, out hit, 15f))
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position - new Vector3(0,0.5f,0), transform.forward, out hit, 15f))
         {
             
-            if (detectCoolTime == 15f && hit.transform.tag == "Player")
+            if (detectCoolTime == 30f && hit.transform.tag == "Player")
             {
-
-                _soundManager.PlayBGM(detectPlayerBGM);
-                _soundManager.PlaySFXVariable3(detectPlayerSFX, 0.4f);
+                SoundManager.instance.PlaySFXVariable3(detectPlayerSFX, 0.4f);
                 detectCoolTime -= Time.deltaTime;
             }
 
             Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
         }
         if (detectCoolTime <= 0)
-            detectCoolTime = 15f;
-        else if (detectCoolTime != 15f)
+            detectCoolTime = 30f;
+        else if (detectCoolTime != 30f)
             detectCoolTime -= Time.deltaTime;
     }
 
@@ -108,17 +103,16 @@ public class MonsterAControl : MonoBehaviour
 
     private void FollowUpdate()
     {
-        agent.isStopped = false;
-        NavMeshPath path = new NavMeshPath();
-        if (agent.CalculatePath(PlayerController.instance.transform.position, path))
-        {
-            agent.SetDestination(PlayerController.instance.transform.position);
-        }
-        if (playerDistance > followDistance)
-        {
-            _soundManager.StopBGM();
-            SetState(AIState.Searching);
-        }
+            agent.isStopped = false;
+            NavMeshPath path = new NavMeshPath();
+            if (agent.CalculatePath(PlayerController.instance.transform.position, path))
+            {
+                agent.SetDestination(PlayerController.instance.transform.position);
+            }
+            if (playerDistance > followDistance)
+            {
+                SetState(AIState.Searching);
+            }
     }
 
     bool IsPlayerInFieldOfView() //플레이어가 시야에 있는지 확인.
