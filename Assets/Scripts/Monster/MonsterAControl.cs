@@ -53,7 +53,6 @@ public class MonsterAControl : MonoBehaviour
     private void Start()
     {
         SetState(AIState.Searching); //처음 시작하면 몬스터는 Searching 상태.
-        agent.isStopped = false;
         GetComponent<NavMeshAgent>().enabled = true;
     }
 
@@ -110,10 +109,8 @@ public class MonsterAControl : MonoBehaviour
     {
         agent.isStopped = false;
         NavMeshPath path = new NavMeshPath();
-        if (agent.CalculatePath(PlayerController.instance.transform.position, path))
-        {
-            agent.SetDestination(PlayerController.instance.transform.position);
-        }
+        agent.CalculatePath(PlayerController.instance.transform.position, path);
+        agent.SetDestination(PlayerController.instance.transform.position);
         if (playerDistance > followDistance)
         {
             _soundManager.StopBGM();
@@ -136,13 +133,11 @@ public class MonsterAControl : MonoBehaviour
             case AIState.Searching:
                 {
                     agent.speed = searchSpeed;
-                    agent.isStopped = false;
                 }
                 break;
             case AIState.Following:
                 {
                     agent.speed = followSpeed;
-                    agent.isStopped = false;
                 }
                 break;
         }
