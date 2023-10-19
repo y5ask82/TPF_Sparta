@@ -116,7 +116,11 @@ public class UIManager : MonoBehaviour
     }
     public void OnClickExit()
     {
-        Debug.Log("������~");
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 
     public void SetBright()
@@ -167,7 +171,7 @@ public class UIManager : MonoBehaviour
             yield return 0;
             curTime += Time.deltaTime;
         }
-        SceneManager.LoadScene("KKHScene");
+        SceneManager.LoadScene("PJSScene");
         StartCoroutine(FadeOut());
 
     }
