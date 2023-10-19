@@ -21,7 +21,7 @@ public class RedLight : MonoBehaviour
             Point.SetActive(true);
             //test=StartCoroutine(nameof(Blink));//????????
             StartCoroutine(nameof(Blink));
-            Invoke(nameof(Off), 5f);
+            Invoke(nameof(Off), 10f);
             //StopCoroutine(test);///????????
         }
     }
