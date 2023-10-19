@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    [SerializeField] private AudioSource bgmSoundsBase;
     [SerializeField] private AudioSource bgmSounds;
     [SerializeField] private AudioSource sfxSounds;
     [SerializeField] private AudioSource sfxSoundsVariable1;
@@ -68,6 +69,19 @@ public class SoundManager : MonoBehaviour
     public float GetSFXVolume()
     {
         return sfxVolume;
+    }
+
+    public void PlayBaseBGM(AudioClip clip)
+    {
+        bgmSoundsBase.Stop();
+        bgmSoundsBase.clip = clip;
+        bgmSoundsBase.volume = bgmVolume;
+        bgmSoundsBase.Play();
+    }
+
+    public void StopBaseBGM()
+    {
+        bgmSoundsBase.Stop();
     }
 
     public void PlayBGM(AudioClip clip)
