@@ -291,6 +291,7 @@ GameObject:
   - component: {fileID: 9007132219681359116}
   - component: {fileID: 1192272187255766097}
   - component: {fileID: 975337723070312923}
+  - component: {fileID: 332274510133974651}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -313,7 +314,7 @@ Transform:
   - {fileID: 8374395077529547270}
   - {fileID: 8967054035632326033}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4819610656053058375
 MonoBehaviour:
@@ -619,6 +620,23 @@ MonoBehaviour:
   - {fileID: 0}
   hasKeys: 00000000
   keysToCollect: 4
+  getKeySFX: {fileID: 8300000, guid: ff228a89dbb74a640be5efe3fa8f9990, type: 3}
+  MonsterA: {fileID: 0}
+  MonsterB: {fileID: 0}
+  MonsterC: {fileID: 0}
+--- !u!114 &332274510133974651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5522714084375321363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 084e140bca35d614d976065953027c84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseBGM: {fileID: 8300000, guid: 1359d51bd53e945c09f6608df08bc8aa, type: 3}
 --- !u!1 &8082818094542438457
 GameObject:
   m_ObjectHideFlags: 0
