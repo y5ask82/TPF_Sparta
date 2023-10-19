@@ -20,16 +20,6 @@ public class MonsterSpawn : MonoBehaviour
     void Start()
     {
         SpawnMonsterA();
-        SpawnMonsterB();
-        SpawnMonsterC();
-
-        //테스트항목, 게임 시작시 몬스터C가 정지
-        MonsterCControl monsterController = FindObjectOfType<MonsterCControl>();
-        if (monsterController != null)
-        {
-            monsterController.searchSpeed = 0.0f;
-            monsterController.followSpeed = 0.0f;
-        }
     }
 
     public void SpawnMonsterA()
@@ -63,13 +53,19 @@ public class MonsterSpawn : MonoBehaviour
 
     public void SecondPhaseSpawn() //첫번째 열쇠를 획득하면 작동.
     {
-        Destroy(MonsterA);
+        if (curMonsterA != null)
+        {
+            Destroy(curMonsterA);
+        }
         SpawnMonsterB();
     }
 
     public void ThirdPhaseSpawn() //두번째 열쇠를 획득하면 작동.
     {
-        Destroy(MonsterB);
+        if (curMonsterB != null)
+        {
+            Destroy(curMonsterB);
+        }
         SpawnMonsterC();
         //몬스터 C가 움직이지 않도록.
         MonsterCControl monsterController = FindObjectOfType<MonsterCControl>();
@@ -82,7 +78,10 @@ public class MonsterSpawn : MonoBehaviour
 
     public void LastPhaseSpawn() //마지막 열쇠를 획득하면 작동.
     {
-        Destroy(MonsterC);
+        if (curMonsterC != null)
+        {
+            Destroy(curMonsterC);
+        }
         SpawnMonsterA();
         SpawnMonsterB();
         SpawnMonsterC();
