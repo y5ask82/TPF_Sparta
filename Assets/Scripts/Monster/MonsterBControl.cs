@@ -32,13 +32,20 @@ public class MonsterBControl : MonoBehaviour
             // 부드러운 회전을 위해 Slerp 사용
             float rotationSpeed = 10.0f; // 조절 가능한 회전 속도
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
+            
             // 이동 속도와 Time.deltaTime을 사용하여 이동량을 조절
             Vector3 moveAmount = moveDirection * moveSpeed * Time.deltaTime;
 
             // 실제 이동 수행
             transform.Translate(moveAmount, Space.World);
-
+            if(Vector3.Distance(transform.position, targetPosition) > 10f)
+            {
+                moveSpeed = 4f;
+            }
+            if (Vector3.Distance(transform.position, targetPosition) < 10f)
+            {
+                moveSpeed = 1.5f;
+            }
             if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
             {
                 isMoving = false;
