@@ -19,6 +19,6 @@ public class Introbtn : MonoBehaviour
 
     public void GameStart()
     {
-        SceneManager.LoadScene("Intro");
+        SceneManager.LoadScene("Menu");
     }
 }

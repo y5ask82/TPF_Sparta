@@ -274,7 +274,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC870\uBCD1\uC6B0 (\uC801, \uC801UI)"
+  m_Text: "\uC870\uBCD1\uC6B0 (\uBAAC\uC2A4\uD130 \uB85C\uC9C1, \uB124\uBE44\uAC8C\uC774\uC158,
+    \uC548\uC804\uC9C0\uB300 \uB85C\uC9C1)"
 --- !u!222 &735939587
 CanvasRenderer:
   m_ObjectHideFlags: 0
