@@ -20,28 +20,21 @@ public class MonsterBControl : MonoBehaviour
     }
     void Update()
     {
-        // isMoving 플래그가 true일 때만 이동을 수행
         if (isMoving)
         {
             targetPosition = PlayerController.instance.transform.position;
-            // 현재 위치에서 목표 위치로 이동하는 방향 벡터 계산
             Vector3 moveDirection = (targetPosition - transform.position).normalized;
+
+            // 캐릭터를 목표 위치를 향해 회전
+            transform.LookAt(targetPosition);
+
             // 이동 속도와 Time.deltaTime을 사용하여 이동량을 조절
             Vector3 moveAmount = moveDirection * moveSpeed * Time.deltaTime;
 
             // 실제 이동 수행
             transform.Translate(moveAmount);
-            moveDirection.y = 0;
-            transform.rotation = Quaternion.LookRotation(moveDirection);
+
             // 목표 위치에 도달하면 이동 종료
-            if (Vector3.Distance(transform.position, targetPosition) < 10.0f)
-            {
-                moveSpeed = 1.0f;
-            }
-            if (Vector3.Distance(transform.position, targetPosition) < 3.0f)
-            {
-               this.GetComponent<MeshRenderer>().material = material;
-            }
             if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
             {
                 isMoving = false;

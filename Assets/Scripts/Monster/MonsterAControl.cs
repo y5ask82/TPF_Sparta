@@ -110,7 +110,6 @@ public class MonsterAControl : MonoBehaviour
     {
         if (IsPlayerInFieldOfView())
         {
-            
             SetState(AIState.Following);
         }
         if(playerDistance > followDistance + 5.0f)
@@ -191,6 +190,5 @@ public class MonsterAControl : MonoBehaviour
     private void OnDisable()
     {
         _soundManager.StopBGM();
-        Debug.Log("stop");
     }
 }
