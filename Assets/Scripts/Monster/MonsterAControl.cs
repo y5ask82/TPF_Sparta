@@ -206,6 +206,5 @@ public class MonsterAControl : MonoBehaviour
     private void OnDisable()
     {
         _soundManager.StopBGM();
-        Debug.Log("stop");
     }
 }
