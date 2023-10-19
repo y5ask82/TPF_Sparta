@@ -53,6 +53,10 @@ MonoBehaviour:
   searchDistance: 10000
   followDistance: 10
   fieldOfView: 120
+  detectPlayerSFX: {fileID: 0}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!195 &2494531547203065918
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -66,7 +70,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 360
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
