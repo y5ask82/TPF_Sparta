@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -920,7 +920,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 38, y: 338.5874}
+  m_AnchoredPosition: {x: -41, y: 333}
   m_SizeDelta: {x: 515.4847, y: 149.6582}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1437049405
@@ -943,7 +943,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uAC8C\uC784\uC774\uB984"
+  m_text: "\uB4DC\uB9BC \uBA54\uC774\uC988 \uB7EC\uB108"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e2d14022c31aafb40b55ed1f890d8959, type: 2}
   m_sharedMaterial: {fileID: 4378167194703520653, guid: e2d14022c31aafb40b55ed1f890d8959, type: 2}
@@ -977,7 +977,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1006,7 +1006,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -7.110962, w: 0}
+  m_margin: {x: 0, y: 0, z: -160.19519, w: -165.20361}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
