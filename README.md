@@ -1,6 +1,6 @@
 # TPF_Sparta
 
-  # 프로젝트 소개
+  # 1️⃣ 프로젝트 소개
 ### 프로젝트 명 
 **Trump vs Chess**
 ### 프로젝트 소개  
@@ -16,4 +16,5 @@
 <img src="https://img.shields.io/badge/Unity-000000?style=flat&logo=unity&logoColor=white" />
 <img src="https://img.shields.io/badge/VisualStudio-5C2D91?style=flat&logo=visualstudio&logoColor=white" /><br/>
 <img src="https://img.shields.io/badge/Github-181717?style=flat&logo=github&logoColor=white" />
+<img src="https://img.shields.io/badge/FIGMA-F24E1E?style=flat&logo=figma&logoColor=white" />
 <img src="https://img.shields.io/badge/Notion-F8F2E9?style=flat&logo=notion&logoColor=white" />
