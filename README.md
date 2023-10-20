@@ -17,7 +17,7 @@
 
 ### 기술스택
 <img src="https://img.shields.io/badge/CSharp-512BD4?style=flat&logo=csharp&logoColor=white" /> <img src="https://img.shields.io/badge/Unity-000000?style=flat&logo=unity&logoColor=white" /> <img src="https://img.shields.io/badge/VisualStudio-5C2D91?style=flat&logo=visualstudio&logoColor=white" /><br/>
-<img src="https://img.shields.io/badge/Github-181717?style=flat&logo=github&logoColor=white" /> <img src="https://img.shields.io/badge/FIGMA-F24E1E?style=flat&logo=figma&logoColor=white" /> <img src="https://img.shields.io/badge/Notion-F8F2E9?style=flat&logo=notion&logoColor=white" />
+<img src="https://img.shields.io/badge/Github-181717?style=flat&logo=github&logoColor=white" />  <img src="https://img.shields.io/badge/Notion-F8F2E9?style=flat&logo=notion&logoColor=white" />
 
 ##  주요 기능 구현
 ![image](https://github.com/y5ask82/TPF_Sparta/assets/99133865/88c5b681-ea67-4307-aabf-5896af850217)
@@ -74,4 +74,20 @@
 하지만 마지막 라운드에서 이 시스템은 작동하지 않습니다.
 
 중앙의 안전지대에는 벽이 생성되어 있는데 이는 키를 획득할때마다 하나씩 사라지게 됩니다.
+
+#  구성원 소개
+<img src="https://img.shields.io/badge/김경원-000000?style=for-the-badge&logo=googlebard&logoColor=darkpink" /><br/>
+
+
+<img src="https://img.shields.io/badge/박종수-58A616?style=for-the-badge&logo=googlebard&logoColor=white" /><br/>
+
+
+<img src="https://img.shields.io/badge/김강현-FFB71B?style=for-the-badge&logo=googlebard&logoColor=purple" /><br/>
+
+
+<img src="https://img.shields.io/badge/이경현-5056E5?style=for-the-badge&logo=googlebard&logoColor=yellow" /><br/>
+
+
+<img src="https://img.shields.io/badge/조병우-FF7F7F?style=for-the-badge&logo=googlebard&logoColor=darkgray" /><br/>
+</div>
 
