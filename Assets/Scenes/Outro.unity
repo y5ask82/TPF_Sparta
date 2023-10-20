@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -194,7 +194,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC774\uACBD\uD604 (\uD50C\uB808\uC774\uC5B4, \uC12C\uAD11\uD0C4)"
+  m_Text: "\uC774\uACBD\uD604 (\uD50C\uB808\uC774\uC5B4, \uC12C\uAD11\uD0C4,\uD6A8\uACFC\uC74C)"
 --- !u!222 &186906484
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1008,10 +1008,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD300\uC7A5 : \uAE40\uACBD\uC6D0 (\uCD08\uB85D\uBE5B \uBC29\uCD9C, \uC544\uC6C3\uD2B8\uB85C)\n\n\uBD80\uD300\uC7A5
-    : \uBC15\uC885\uC218 (\uB9F5,\uC5F4\uC1E0,\uD0C0\uC774\uBA38,\uD568\uC815 \uC544\uC774\uD15C,
-    \uBD89\uC740\uBE5B \uBC29\uCD9C)\n \n\uD300\uC6D0 : \uAE40\uAC15\uD604 (\uB9C8\uD0B9,
-    \uB9C8\uD0B9\uC800\uC7A5)\n           "
+  m_Text: "\uD300\uC7A5 : \uAE40\uACBD\uC6D0 (\uC548\uC804\uAD6C\uC5ED UI, Outro)\n\n\uBD80\uD300\uC7A5
+    : \uBC15\uC885\uC218 (\uB9F5,\uC5F4\uC1E0,\uD0C0\uC774\uBA38,Trap,\uC548\uC804\uAD6C\uC5EDUI)\n
+    \n\uD300\uC6D0 : \uAE40\uAC15\uD604 (\uB9C8\uD0B9, \uB9C8\uD0B9\uC800\uC7A5,\uC635\uC158,\uBAAC\uC2A4\uD130
+    \uBAA8\uB378\uB9C1)\n           "
 --- !u!222 &2140943584
 CanvasRenderer:
   m_ObjectHideFlags: 0
