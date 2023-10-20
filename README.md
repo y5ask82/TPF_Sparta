@@ -89,9 +89,10 @@
 
 
 <img src="https://img.shields.io/badge/조병우-FF7F7F?style=for-the-badge&logo=googlebard&logoColor=darkgray" /><br/>
-</div>
 
-# 완성 소감
+
+# 완성 소감</div>
+
 
 김경원: 처음에는 진짜 아무것도 못할줄 알았다. 팀원들이랑 튜터님께 귀찮을 정도(?)로 많이 질문도 하고 깃 활용도 엄청 해메고 잘 몰랐는데 점차 조금씩 터득하게 되었고 요번 팀프로젝트를 통해서 실력이 조금이라도 늘었다는 느낌이 든다. 다들 너무 감사하고 최종 프로젝트때 꼭 도 조금씩 도움이 됬으면 좋겠다. 
 
