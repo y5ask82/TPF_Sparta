@@ -40,7 +40,6 @@ public class MonsterCControl : MonoBehaviour
         SetState(AIState.Searching); //처음 시작하면 몬스터는 Searching 상태.
         agent.isStopped = false;
         GetComponent<NavMeshAgent>().enabled = true;
-        gameObject.tag = "Key";
     }
 
     private void Update()
