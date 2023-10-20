@@ -912,7 +912,7 @@ RectTransform:
   m_GameObject: {fileID: 1437049403}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1625, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 956062094}
@@ -920,8 +920,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -41, y: 333}
-  m_SizeDelta: {x: 515.4847, y: 149.6582}
+  m_AnchoredPosition: {x: 242, y: 311.1073}
+  m_SizeDelta: {x: 1185.8623, y: 204.6183}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1437049405
 MonoBehaviour:
@@ -943,7 +943,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB4DC\uB9BC \uBA54\uC774\uC988 \uB7EC\uB108"
+  m_text: Dream Maze
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e2d14022c31aafb40b55ed1f890d8959, type: 2}
   m_sharedMaterial: {fileID: 4378167194703520653, guid: e2d14022c31aafb40b55ed1f890d8959, type: 2}
