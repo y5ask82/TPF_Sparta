@@ -14,7 +14,8 @@
 
 ### 개발기간 
 2023.10.13 ~ 2023.10.20
-
+### 시연영상
+https://www.youtube.com/watch?v=paRIYzkBVv4
 ### 기술스택
 <img src="https://img.shields.io/badge/CSharp-512BD4?style=flat&logo=csharp&logoColor=white" /> <img src="https://img.shields.io/badge/Unity-000000?style=flat&logo=unity&logoColor=white" /> <img src="https://img.shields.io/badge/VisualStudio-5C2D91?style=flat&logo=visualstudio&logoColor=white" /><br/>
 <img src="https://img.shields.io/badge/Github-181717?style=flat&logo=github&logoColor=white" />  <img src="https://img.shields.io/badge/Notion-F8F2E9?style=flat&logo=notion&logoColor=white" />
